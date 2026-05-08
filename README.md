@@ -13,7 +13,7 @@
 <p> <img src="https://skillicons.dev/icons?i=html,css,js,python,cs,cpp,mysql,react,nodejs,git,github,vscode" /> </p>
 
 📊 GitHub Analytics
-<p align="center"> <img height="160em" src="https://github-readme-stats.vercel.app/api?username=GuilhermeSANT29&show_icons=true&theme=tokyonight" /> <img height="160em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=GuilhermeSANT29&layout=compact&theme=tokyonight"/> </p> <p align="center"> <img src="https://github-readme-activity-graph.vercel.app/graph?username=GuilhermeSANT29&theme=tokyo-night&bg_color=0d1117&color=00ffe7&line=0af&point=39ff14&area=true&hide_border=true"/> </p>
+<p align="center"> src="https://github-readme-stats.vercel.app/api?username=GuilhermeSANT29&show_icons=true&theme=tokyonight" /> <img height="160em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=GuilhermeSANT29&layout=compact&theme=tokyonight"/> </p> <p align="center"> <img src="https://github-readme-activity-graph.vercel.app/graph?username=GuilhermeSANT29&theme=tokyo-night&bg_color=0d1117&color=00ffe7&line=0af&point=39ff14&area=true&hide_border=true"/> </p>
 
 ⚡ Featured Projects
 
