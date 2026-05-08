@@ -85,14 +85,10 @@ Busco oportunidades internacionais em empresas de tecnologia (Big Techs).
 🤝 80+ conexões no LinkedIn
 🧠 8+ tecnologias dominadas
 
-🌍 Contato
-📧 Email: contate.guilherme.santos@gmail.com
-💼 LinkedIn: linkedin.com/in/gui-santos05092008
-💻 GitHub: github.com/GuilhermeSANT29
 📸 Instagram: @Sant_gewinner
 🐦 X (Twitter): @00eoSant
-📌 Status
 
+ Status
 🎓 Formação em andamento (SENAI - 2026)
 
 🚧 Roadmap
