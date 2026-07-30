@@ -28,6 +28,7 @@
 
 
 🎯 Current Focus
+
 > cybersecurity
 > cloud computing
 > Database
@@ -47,7 +48,9 @@
 
 
 🧑‍💻 Sobre mim
+
 técnico em Cibersistemas
+
 Guarulhos, SP - Brasil.
 
 Busco oportunidades internacionais em empresas de tecnologia (Big Techs).
@@ -55,15 +58,24 @@ Busco oportunidades internacionais em empresas de tecnologia (Big Techs).
 
 
 📊 Métricas
+
 📦 3+ repositórios
+
 🤝 80+ conexões no LinkedIn
+
 🧠 15+ tecnologias dominadas
 
 
  Status
+ 
 🎓 Formado (SENAI - 2026)
+
 🔐 Cibersegurança
+
 ⚙️ Automação de processos
+
 ☁️ Banco de dados Infraestrutura e Cloud
+
 💻 Desenvolvimento de software
+
 💡 Técnico Elétrica CLPs
