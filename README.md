@@ -1,5 +1,7 @@
 👨‍💻 Guilherme Santos
+
 🛡️ Cybersecurity | ⚙️ Automation |
+
 <img src="https://readme-typing-svg.herokuapp.com/?color=00FFE7&size=24&center=true&vCenter=true&width=800&lines=Cybersystems+Technician;Junior+Software+Developer;Ethical+Hacking+Enthusiast;Cloud+%26+Infrastructure;Open+to+Global+Opportunities" />
 
 🚀 About Me
