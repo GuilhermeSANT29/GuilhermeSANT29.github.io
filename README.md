@@ -16,25 +16,28 @@
 
 💡 Always building, learning, and improving
 
+🟢 Open to Work
+🌍 Looking for global opportunities
+
 🧠 Tech Stack
+
 
 
 📊 GitHub Analytics
 <p align="center"> </p> <p align="center"> <img src="https://github-readme-activity-graph.vercel.app/graph?username=GuilhermeSANT29&theme=tokyo-night&bg_color=0d1117&color=00ffe7&line=0af&point=39ff14&area=true&hide_border=true"/> </p>
+
 
 🎯 Current Focus
 > cybersecurity
 > cloud computing
 > Database
 
-> 
+
 🌍 Connect With Me
 <p> <a href="https://linkedin.com/in/gui-santos05092008"><img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin"></a> <a href="https://github.com/GuilhermeSANT29"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github"></a> </p>
 📌 Status
 
 
-🟢 Open to Work
-🌍 Looking for global opportunities
 
 🌐 Sobre o Projeto
 
