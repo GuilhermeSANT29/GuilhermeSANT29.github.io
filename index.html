@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- ============================================================
-     GUILHERME SANTOS — CYBERSECURITY ANALYST PORTFOLIO
+     GUILHERME SANTOS — PORTFOLIO
      ============================================================
      File     : Index.html
      Author   : Guilherme Santos (SANT29)
@@ -331,9 +331,10 @@
       border: 1px solid var(--border);
       color: var(--foreground);
     }
-    .btn-outline:hover { transform: translateY(-2px); }
+.btn-outline:hover { transform: translateY(-2px); }
     .btn-outline.cyan:hover { border-color: var(--cyan); color: var(--cyan); }
     .btn-outline.magenta:hover { border-color: var(--magenta); color: var(--magenta); }
+    .btn-outline.orange:hover { border-color: var(--blood-bright); color: var(--blood-bright); }
 
     /* ----------------------------------------------------------
        HEADER / NAVIGATION
@@ -387,38 +388,54 @@
     .desktop-nav a.active::after { width: 100%; }
 
     .menu-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       border: 1px solid var(--border);
       border-radius: 0.375rem;
-      padding: 0.4rem 0.75rem;
+      padding: 0.5rem 0.8rem;
       font-family: "JetBrains Mono", monospace;
-      font-size: 0.75rem;
+      font-size: 1.1rem;
+      line-height: 1;
       color: var(--primary);
       background: transparent;
       cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
     }
+    .menu-btn:hover {
+      border-color: color-mix(in oklab, var(--primary) 60%, transparent);
+      color: var(--foreground);
+    }
+    /* Dropdown panel anchored just below the sticky header.
+       Works identically on desktop, tablet and mobile. */
     .mobile-nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
       display: none;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.5rem;
       border-top: 1px solid var(--border);
-      background: var(--surface);
-      padding: 1.25rem;
+      border-bottom: 1px solid var(--border);
+      background: color-mix(in oklab, var(--surface) 92%, transparent);
+      backdrop-filter: blur(20px);
+      padding: 0.9rem 1.25rem;
+      box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.7);
     }
     .mobile-nav.open { display: flex; }
     .mobile-nav a {
       font-family: "JetBrains Mono", monospace;
       font-size: 0.8rem;
       letter-spacing: 0.14em;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid color-mix(in oklab, var(--border) 45%, transparent);
       color: var(--muted-foreground);
+      transition: color 0.2s, padding-left 0.2s;
     }
-    .mobile-nav a:hover { color: var(--primary); }
-
-    /* Tablet and up: show desktop nav, hide hamburger/mobile menu. */
-    @media (min-width: 768px) {
-      .desktop-nav { display: flex; }
-      .menu-btn { display: none; }
-      .mobile-nav { display: none !important; }
-    }
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav a:hover,
+    .mobile-nav a.active { color: var(--primary); padding-left: 0.4rem; }
 
     /* ----------------------------------------------------------
        HERO
@@ -704,8 +721,91 @@
     .education-card .meta { font-family: "JetBrains Mono", monospace; font-size: 0.68rem; letter-spacing: 0.16em; color: var(--primary); }
     .education-card h3 { margin: 0.5rem 0 0; font-family: "Orbitron", sans-serif; font-size: 1.15rem; }
     .education-card .school { margin: 0.25rem 0 0; font-size: 0.9rem; color: var(--cyan); }
-    .education-card p { margin: 0.75rem 0 0; max-width: 42rem; font-size: 0.9rem; color: var(--muted-foreground); }
+.education-card p { margin: 0.75rem 0 0; max-width: 42rem; font-size: 0.9rem; color: var(--muted-foreground); }
     .lang-tags { margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    /* ----------------------------------------------------------
+       LANGUAGES (EDUCATION SUB-SECTION)
+       Prominent, self-contained block inside the Academic section
+       that highlights language proficiency with CEFR levels.
+       Each language is shown as a card with the language name,
+       a large CEFR badge and a small proficiency descriptor.
+       ---------------------------------------------------------- */
+    .languages {
+      margin-top: 2.5rem;
+      border-top: 1px solid color-mix(in oklab, var(--primary) 15%, transparent);
+      padding-top: 2rem;
+    }
+    .languages .languages-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0 0 0.25rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+    .languages .languages-title::before {
+      content: "";
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: color-mix(in oklab, var(--primary) 70%, transparent);
+    }
+    .languages .languages-sub {
+      margin: 0.5rem 0 0;
+      max-width: 42rem;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--muted-foreground);
+    }
+    .languages-grid {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 640px) { .languages-grid { grid-template-columns: repeat(3, 1fr); } }
+    .language-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1.25rem;
+      height: 100%;
+    }
+    .language-card .lang-name {
+      font-family: "Orbitron", "Space Grotesk", sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--foreground);
+    }
+    .language-card .cefr {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid color-mix(in oklab, var(--cyan) 55%, transparent);
+      background: color-mix(in oklab, var(--cyan) 12%, transparent);
+      border-radius: 9999px;
+      padding: 0.35rem 0.9rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--cyan);
+    }
+    .language-card .lang-level {
+      margin: 0;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      color: var(--muted-foreground);
+      text-transform: uppercase;
+    }
 
     /* ----------------------------------------------------------
        CONTACT
@@ -848,18 +948,9 @@
        Sticky header with logo, desktop nav links, a hamburger
        button for mobile, and a collapsible mobile nav panel.
        ========================================================== -->
-  <header>
+<header>
     <div class="container header-inner">
       <a href="#home" class="logo glitch"><span class="text-muted">[</span>SANT29<span class="text-muted">]</span></a>
-      <nav class="desktop-nav" id="desktop-nav">
-        <a href="#about">PERFIL</a>
-        <a href="#security">DEFESA</a>
-        <a href="#technology">TECNOLOGIA</a>
-        <a href="#projects">LABS</a>
-        <a href="#experience">TRAJETÓRIA</a>
-        <a href="#education">FORMAÇÃO</a>
-        <a href="#contact">CONTATO</a>
-      </nav>
       <button class="menu-btn" id="menu-btn" aria-label="Abrir menu">☰</button>
     </div>
     <nav class="mobile-nav" id="mobile-nav">
@@ -900,9 +991,10 @@
           <p class="lead">Cyber-Systems Technician focused on Cybersecurity, Network Security, Infrastructure, and Security Automation. Develops Python-based solutions for automation, environment analysis, industrial systems integration (including PLCs), and technical troubleshooting, applying security by design principles and supporting the reliability of interconnected systems.</p>
         </div>
         <div class="reveal hero-actions" style="transition-delay: 280ms;">
-          <a href="#projects" class="btn btn-primary"><span class="sweep"></span><span>VER LABS</span></a>
-          <a href="https://github.com/GuilhermeSANT29" target="_blank" rel="noopener" class="btn btn-outline cyan">GITHUB</a>
-          <a href="https://linkedin.com/in/gui-santos05092008" target="_blank" rel="noopener" class="btn btn-outline magenta">LINKEDIN</a>
+<a href="#projects" class="btn btn-primary"><span class="sweep"></span><span>VER LABS</span></a>
+          <a href="https://github.com/GuilhermeSANT29" target="_blank" rel="noopener" class="btn btn-outline magenta">GITHUB</a>
+          <a href="https://linkedin.com/in/gui-santos05092008" target="_blank" rel="noopener" class="btn btn-outline cyan">LINKEDIN</a>
+          <a href="https://canva.link/potifolioguilhermesantos" target="_blank" rel="noopener" class="btn btn-outline orange">PORTFÓLIO</a>
         </div>
         <div class="reveal hero-stats" style="transition-delay: 340ms;">
           <div class="panel stat"><dt>STATUS</dt><dd>OPEN TO WORK</dd></div>
@@ -1155,18 +1247,35 @@
           <div class="school">SENAI — Guarulhos, Brasil</div>
           <p>Formação técnica com base em cibersistemas, redes, desenvolvimento de software, automação, cloud computing, bancos de dados e fundamentos de segurança.</p>
         </div>
-        <div class="reveal lang-tags" style="transition-delay: 160ms;">
-          <span class="tag">Português — Nativo</span>
-          <span class="tag">Inglês — Intermediário</span>
-          <span class="tag">Espanhol — Básico</span>
+        <!-- Languages sub-section: prominent cards with CEFR levels -->
+        <div class="reveal languages" style="transition-delay: 160ms;">
+          <h3 class="languages-title">// Languages</h3>
+          <p class="languages-sub">Resumo de proficiência idiomática conforme o quadro comum europeu de referência para línguas (CEFR).</p>
+          <div class="languages-grid">
+            <div class="panel language-card">
+              <span class="lang-name">Português</span>
+              <span class="cefr">C2</span>
+              <p class="lang-level">Nativo / Proficiency</p>
+            </div>
+            <div class="panel language-card">
+              <span class="lang-name">Inglês</span>
+              <span class="cefr">B1</span>
+              <p class="lang-level">Intermediário</p>
+            </div>
+            <div class="panel language-card">
+              <span class="lang-name">Espanhol</span>
+              <span class="cefr">A2</span>
+              <p class="lang-level">Básico</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ========================================================
+<!-- ========================================================
          SECTION 8 — CONTACT (id="contact")
-         "Open channel" section with email, LinkedIn, GitHub and
-         location cards. Links are external and open in a new tab.
+         "Open channel" section with email (opens Gmail) and
+         WhatsApp cards. Links are external and open in a new tab.
          ======================================================== -->
     <section class="contact" id="contact">
       <div class="cyber-grid" style="opacity: 0.4;"></div>
@@ -1178,22 +1287,14 @@
           <p>Aberto a oportunidades de estágio e posições júnior em Cybersecurity, SOC, Blue Team e áreas relacionadas.</p>
         </div>
         <div class="grid-2">
-          <a href="mailto:contate.guilherme.santos@gmail.com" class="reveal panel contact-card" style="transition-delay: 70ms;">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contate.guilherme.santos@gmail.com&su=Oportunidade%20de%20Contato" target="_blank" rel="noopener" class="reveal panel contact-card" style="transition-delay: 70ms;">
             <div class="label">EMAIL</div>
             <div class="value">contate.guilherme.santos@gmail.com</div>
           </a>
-          <a href="https://linkedin.com/in/gui-santos05092008" target="_blank" rel="noopener" class="reveal panel contact-card" style="transition-delay: 140ms;">
-            <div class="label">LINKEDIN</div>
-            <div class="value">gui-santos05092008</div>
+          <a href="https://wa.me/5511961778262" target="_blank" rel="noopener" class="reveal panel contact-card" style="transition-delay: 140ms;">
+            <div class="label">WHATSAPP</div>
+            <div class="value">+55 11 96177-8262</div>
           </a>
-          <a href="https://github.com/GuilhermeSANT29" target="_blank" rel="noopener" class="reveal panel contact-card" style="transition-delay: 210ms;">
-            <div class="label">GITHUB</div>
-            <div class="value">GuilhermeSANT29</div>
-          </a>
-          <div class="reveal panel contact-card" style="transition-delay: 280ms;">
-            <div class="label">LOCALIZAÇÃO</div>
-            <div class="value">Guarulhos, SP — Brasil</div>
-          </div>
         </div>
       </div>
     </section>
@@ -1340,7 +1441,7 @@
         "education",
         "contact"
       ];
-      const links = document.querySelectorAll(".desktop-nav a, .mobile-nav a");
+const links = document.querySelectorAll(".mobile-nav a");
       const navObserver = new IntersectionObserver((entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting) {
@@ -1371,11 +1472,24 @@
           nav.classList.remove("open");
           btn.textContent = "☰";
         };
-        btn.addEventListener("click", toggle);
+btn.addEventListener("click", toggle);
         nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
+        // Close the menu when clicking outside of it or pressing Escape.
+        const onDocClick = (e) => {
+          if (nav.classList.contains("open") && !nav.contains(e.target) && e.target !== btn)
+            close();
+        };
+        const onKey = (e) => {
+          if (e.key === "Escape")
+            close();
+        };
+        document.addEventListener("click", onDocClick);
+        document.addEventListener("keydown", onKey);
         cleanups.push(() => {
           btn.removeEventListener("click", toggle);
           nav.querySelectorAll("a").forEach((a) => a.removeEventListener("click", close));
+          document.removeEventListener("click", onDocClick);
+          document.removeEventListener("keydown", onKey);
         });
       }
 
