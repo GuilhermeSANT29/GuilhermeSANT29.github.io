@@ -1,1635 +1,1399 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- ============================================================
+     GUILHERME SANTOS — CYBERSECURITY ANALYST PORTFOLIO
+     ============================================================
+     File     : Index.html
+     Author   : Guilherme Santos (SANT29)
+= -->
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Guilherme Santos — Cybersystems Technician & Jr Developer and Cybersecurity. Portfolio, Blog, Resume and more." />
-  <meta name="keywords" content="cybersecurity, ethical hacking, jr developer," />
-  <meta name="author" content="Guilherme Santos" />
-  <meta property="og:title" content="Guilherme Santos | Cyber & Dev" />
-  <meta property="og:description" content="Cybersystems Technician & Junior Developer and Cybersecurity" />
-  <meta property="og:url" content="https://GuilhermeSANT29.github.io" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <title>Guilherme Santos | Cyber &amp; Dev</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- ==========================================================
+       META / SEO / SOCIAL SHARING
+       Basic document metadata, description, Open Graph and
+       Twitter cards used by search engines and social media.
+       ========================================================== -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guilherme Santos | Cybersecurity Analyst</title>
+  <meta name="description" content="Currículo de Guilherme Santos — Técnico em Cibersistemas">
+  <meta property="og:title" content="Guilherme Santos">
+  <meta property="og:description" content="Técnico em Cibersistemas focado, Network Security e Security Automation.">
+  <meta property="og:type" content="profile">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#050806">
 
+  <!-- ==========================================================
+       FONTS
+       Google Fonts: JetBrains Mono (code), Space Grotesk (body),
+       Orbitron (display/headings). Preconnect speeds up loading.
+       ========================================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Orbitron:wght@600;700;800;900&display=swap">
+
+  <!-- ==========================================================
+       ===== CSS =====
+       All styles are inlined in a single <style> block:
+        A. Design tokens  — CSS custom properties (colors, radius)
+        B. Base / reset   — global defaults and element resets
+        C. Utilities      — typography, color and layout helpers
+        D. Decorative FX  — grid, scanlines, panels, reveal, glitch
+        E. Components     — tag, eyebrow, buttons, header, hero...
+        F. Keyframes      — all CSS animations
+       ========================================================== -->
   <style>
-    /* ============================================================
-       DESIGN TOKENS
-    ============================================================ */
-    :root {
-      --c-bg:        #030712;
-      --c-surface:   #0d1117;
-      --c-surface2:  #161b22;
-      --c-primary:   #00ffe7;
-      --c-secondary: #0af;
-      --c-accent:    #39ff14;
-      --c-danger:    #ff2d6b;
-      --c-warn:      #ffd60a;
-      --c-text:      #cdd6f4;
-      --c-muted:     #6c7086;
-      --c-border:    rgba(0,255,231,.12);
-      --c-glow:      rgba(0,255,231,.35);
-
-      --font-display: 'Orbitron', monospace;
-      --font-mono:    'Share Tech Mono', monospace;
-      --font-body:    'Rajdhani', sans-serif;
-
-      --nav-h: 72px;
-      --radius: 6px;
-      --transition: .25s cubic-bezier(.4,0,.2,1);
+    /* ----------------------------------------------------------
+       A. DESIGN TOKENS (CSS CUSTOM PROPERTIES)
+       Central palette. Colors use oklch() for perceptual accuracy.
+       --primary is the neon accent, --blood variants are reserved
+       for the "Technical Foundation" (technology) section.
+       Glitch colors are matched 1:1 to index.html's
+       --c-danger / --c-secondary.
+       ---------------------------------------------------------- */
+    html:root {
+      --radius: 0.75rem;
+      --background: oklch(0.17 0.05 158);
+      --foreground: oklch(0.95 0.02 150);
+      --surface: oklch(0.22 0.055 160);
+      --surface-2: oklch(0.26 0.06 162);
+      --card: oklch(0.22 0.055 160);
+      --primary: oklch(0.8 0.15 210);
+      --primary-foreground: oklch(0.18 0.04 158);
+      --secondary: oklch(0.28 0.05 165);
+      --muted: oklch(0.26 0.045 162);
+      --muted-foreground: oklch(0.74 0.03 158);
+      --accent: oklch(0.84 0.12 220);
+      --border: oklch(0.36 0.06 165);
+      --cyan: oklch(0.86 0.11 218);
+      --sky: oklch(0.85 0.12 222);
+      --blue: oklch(0.62 0.17 252);
+      --magenta: oklch(0.72 0.25 330);
+      --amber: oklch(0.86 0.17 92);
+      --blood: oklch(0.45 0.19 25);
+      --blood-deep: oklch(0.32 0.15 24);
+      --blood-bright: oklch(0.58 0.21 27);
+      /* Glitch colors — matched 1:1 to index.html's --c-danger / --c-secondary */
+      --glitch-red: #ff2d6b;
+      --glitch-blue: #0af;
+      --gradient-neon: linear-gradient(100deg, oklch(0.7 0.13 232), var(--sky) 50%, oklch(0.92 0.08 210));
+      --gradient-blood: linear-gradient(100deg, var(--blood-deep), var(--blood) 50%, var(--blood-bright));
+      --gradient-panel: linear-gradient(150deg, color-mix(in oklab, var(--surface-2) 90%, transparent), color-mix(in oklab, var(--background) 85%, transparent));
+      --glow-primary: 0 0 0 1px color-mix(in oklab, var(--primary) 35%, transparent), 0 14px 50px -18px color-mix(in oklab, var(--primary) 55%, transparent);
     }
 
-    /* ============================================================
-       RESET
-    ============================================================ */
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
+    /* ----------------------------------------------------------
+       B. BASE / RESET
+       Box-sizing, smooth scrolling, body defaults, selection color
+       and reset of link text decoration.
+       ---------------------------------------------------------- */
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      background: var(--c-bg);
-      color: var(--c-text);
-      font-family: var(--font-body);
-      font-size: 16px;
+      margin: 0;
+      background: var(--background);
+      color: var(--foreground);
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
       line-height: 1.6;
-      overflow-x: hidden;
     }
+
+    ::selection { background: color-mix(in oklab, var(--primary) 40%, transparent); }
+
     a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    ul { list-style: none; }
 
-    /* ============================================================
-       CANVAS BACKGROUND
-    ============================================================ */
-    #bg-canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
+    /* ----------------------------------------------------------
+       C. UTILITIES
+       Reusable helper classes: font families, text colors,
+       background colors and the neon gradient text effect.
+       ---------------------------------------------------------- */
+    .font-mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+    .font-display { font-family: "Orbitron", "Space Grotesk", sans-serif; }
+
+    .text-primary { color: var(--primary); }
+    .text-primary-foreground { color: var(--primary-foreground); }
+    .text-muted { color: var(--muted-foreground); }
+    .text-cyan { color: var(--cyan); }
+    .text-magenta { color: var(--magenta); }
+    .text-amber { color: var(--amber); }
+
+    .bg-background { background-color: var(--background); }
+    .bg-surface { background-color: var(--surface); }
+    .bg-primary { background-color: var(--primary); }
+    .border-border { border-color: var(--border); }
+
+    /* Gradient text filled with the neon (blue/sky) gradient. */
+    .text-neon {
+      background: var(--gradient-neon);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    /* ============================================================
-       SCANLINE OVERLAY
-    ============================================================ */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0,0,0,.07) 2px,
-        rgba(0,0,0,.07) 4px
-      );
+    /* Soft neon halo behind text via text-shadow. */
+    .glow-text {
+      text-shadow: 0 0 22px color-mix(in oklab, var(--sky) 55%, transparent);
     }
 
-    /* ============================================================
-       LAYOUT WRAPPER
-    ============================================================ */
-    .page-wrap { position: relative; z-index: 2; }
+    /* Technical Foundation keeps the dark red accent */
+    #technology .text-neon { background-image: var(--gradient-blood); -webkit-background-clip: text; background-clip: text; }
+    #technology .glow-text { text-shadow: 0 0 22px color-mix(in oklab, var(--blood-bright) 60%, transparent); }
 
-    /* ============================================================
-       HEADER / NAV
-    ============================================================ */
+    /* ----------------------------------------------------------
+       LAYOUT
+       Centered page container with a max width of 1140px and a
+       20px horizontal gutter on small screens.
+       ---------------------------------------------------------- */
+    .container {
+      width: min(1140px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    /* ----------------------------------------------------------
+       D. DECORATIVE EFFECTS
+       Animated cyber grid, scanline overlay, glowing panels,
+       corner brackets, scroll-reveal and glitch hover.
+       ---------------------------------------------------------- */
+
+    /* Animated background grid drifting continuously. */
+    .cyber-grid {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(to right, color-mix(in oklab, var(--primary) 9%, transparent) 1px, transparent 1px),
+        linear-gradient(to bottom, color-mix(in oklab, var(--primary) 9%, transparent) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: grid-drift 8s linear infinite;
+    }
+
+    /* CRT-style horizontal scanlines rendered as an overlay. */
+    .scanlines::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(to bottom, transparent 0 3px, color-mix(in oklab, var(--primary) 5%, transparent) 3px 4px);
+      mix-blend-mode: overlay;
+    }
+
+    /* Glossy card with gradient background, border and hover glow. */
+    .panel {
+      background: var(--gradient-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .panel:hover {
+      border-color: color-mix(in oklab, var(--primary) 55%, transparent);
+      transform: translateY(-4px);
+      box-shadow: var(--glow-primary);
+    }
+    .panel::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 40%;
+      height: 1px;
+      background: var(--gradient-neon);
+      opacity: 0.7;
+    }
+
+    /* HUD-style corner brackets (top-left / bottom-right). */
+    .corner-brackets::after {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      pointer-events: none;
+      background:
+        linear-gradient(var(--primary), var(--primary)) top left / 12px 1px no-repeat,
+        linear-gradient(var(--primary), var(--primary)) top left / 1px 12px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) bottom right / 12px 1px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) bottom right / 1px 12px no-repeat;
+      opacity: 0.6;
+    }
+
+    /* Scroll-reveal: elements start hidden and slide up when they
+       enter the viewport (class "visible" is added by JS). */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Horizontal glitch shake applied on hover. */
+    .glitch { position: relative; }
+    .glitch:hover { animation: glitch-x 0.35s steps(2) 1; }
+
+    /* Blinking terminal caret (block cursor). */
+    .caret::after {
+      content: "▌";
+      color: var(--primary);
+      animation: blink 1s step-end infinite;
+    }
+
+    /* ----------------------------------------------------------
+       E. COMPONENTS
+       Individual UI pieces: tags, eyebrows, section titles,
+       buttons, header/nav, hero, ticker, cards, terminal,
+       timeline, education and contact blocks.
+       ---------------------------------------------------------- */
+
+    /* Small pill-shaped keyword chip. */
+    .tag {
+      display: inline-flex;
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--surface-2) 60%, transparent);
+      border-radius: 9999px;
+      padding: 0.25rem 0.65rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.05em;
+      color: var(--muted-foreground);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .tag:hover { border-color: color-mix(in oklab, var(--cyan) 60%, transparent); color: var(--cyan); }
+
+    /* Section label: uppercase mono text with a short leading line. */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: color-mix(in oklab, var(--primary) 70%, transparent);
+    }
+
+    /* Large display heading for each section. */
+    .section-title {
+      font-family: "Orbitron", "Space Grotesk", sans-serif;
+      font-size: clamp(1.75rem, 5vw, 3rem);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+
+    /* Buttons: solid primary (with sweep animation) and outline. */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.5rem;
+      padding: 0.85rem 1.5rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      transition: transform 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+      background: var(--primary);
+      color: var(--primary-foreground);
+    }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-primary .sweep {
+      position: absolute;
+      inset: 0;
+      left: 0;
+      width: 33%;
+      background: rgba(255,255,255,0.3);
+      opacity: 0;
+      transform: translateX(-120%);
+    }
+    .btn-primary:hover .sweep {
+      opacity: 1;
+      animation: sweep 0.7s ease forwards;
+    }
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--foreground);
+    }
+    .btn-outline:hover { transform: translateY(-2px); }
+    .btn-outline.cyan:hover { border-color: var(--cyan); color: var(--cyan); }
+    .btn-outline.magenta:hover { border-color: var(--magenta); color: var(--magenta); }
+
+    /* ----------------------------------------------------------
+       HEADER / NAVIGATION
+       Sticky top bar with blur backdrop, desktop nav (inline)
+       and a hamburger button that toggles the mobile nav.
+       ---------------------------------------------------------- */
     header {
       position: sticky;
       top: 0;
-      z-index: 900;
-      height: var(--nav-h);
+      z-index: 30;
+      border-bottom: 1px solid color-mix(in oklab, var(--primary) 15%, transparent);
+      background: color-mix(in oklab, var(--background) 85%, transparent);
+      backdrop-filter: blur(20px);
+    }
+    .header-inner {
       display: flex;
+      height: 70px;
       align-items: center;
       justify-content: space-between;
-      padding: 0 2.5rem;
-      background: rgba(3,7,18,.85);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--c-border);
-      box-shadow: 0 0 40px rgba(0,255,231,.06);
     }
-
     .logo {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-weight: 900;
-      color: var(--c-primary);
-      text-shadow: 0 0 14px var(--c-glow);
-      letter-spacing: 3px;
-      display: flex;
-      align-items: center;
-      gap: .6rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--primary);
     }
-    .logo-bracket { color: var(--c-muted); font-weight: 400; }
-    .logo-dot {
-      width: 8px; height: 8px;
-      background: var(--c-accent);
-      border-radius: 50%;
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-    @keyframes pulse-dot {
-      0%,100% { box-shadow: 0 0 0 0 rgba(57,255,20,.6); }
-      50%      { box-shadow: 0 0 0 6px rgba(57,255,20,.0); }
-    }
-
-    nav { display: flex; gap: .25rem; }
-    .nav-link {
-      font-family: var(--font-mono);
-      font-size: .78rem;
-      color: var(--c-muted);
-      padding: .45rem .9rem;
-      border-radius: var(--radius);
-      border: 1px solid transparent;
-      transition: all var(--transition);
-      letter-spacing: 1px;
+    .desktop-nav { display: none; gap: 1.5rem; }
+    .desktop-nav a {
       position: relative;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: var(--muted-foreground);
+      transition: color 0.2s;
     }
-    .nav-link::before {
-      content: attr(data-index);
-      font-size: .6rem;
-      color: var(--c-primary);
+    .desktop-nav a::after {
+      content: "";
       position: absolute;
-      top: 4px; left: 6px;
-      opacity: 0;
-      transition: opacity var(--transition);
-    }
-    .nav-link:hover,
-    .nav-link.active {
-      color: var(--c-primary);
-      border-color: var(--c-border);
-      background: rgba(0,255,231,.06);
-      text-shadow: 0 0 8px var(--c-glow);
-    }
-    .nav-link:hover::before,
-    .nav-link.active::before { opacity: 1; }
-
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: 1px solid var(--c-border);
-      color: var(--c-primary);
-      font-size: 1.2rem;
-      padding: .3rem .7rem;
-      border-radius: var(--radius);
-      cursor: pointer;
-    }
-
-    /* ============================================================
-       MAIN
-    ============================================================ */
-    main {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 3rem 2rem 6rem;
-    }
-
-    /* ============================================================
-       SECTION BASE
-    ============================================================ */
-    section {
-      scroll-margin-top: calc(var(--nav-h) + 2rem);
-      margin-bottom: 6rem;
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    section.visible { opacity: 1; transform: translateY(0); }
-
-    .section-label {
-      font-family: var(--font-mono);
-      font-size: .7rem;
-      color: var(--c-primary);
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: .6rem;
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-    }
-    .section-label::after {
-      content: '';
-      flex: 1;
+      bottom: -6px;
+      left: 0;
       height: 1px;
-      background: linear-gradient(90deg, var(--c-border) 0%, transparent 100%);
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-    }
-    .section-title span { color: var(--c-primary); }
-
-    /* ============================================================
-       HERO
-    ============================================================ */
-    #home {
-      min-height: calc(100vh - var(--nav-h));
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 6rem 0 4rem;
-      position: relative;
-      margin-bottom: 4rem;
-    }
-
-    .hero-eyebrow {
-      font-family: var(--font-mono);
-      font-size: .78rem;
-      color: var(--c-accent);
-      letter-spacing: 4px;
-      margin-bottom: 1.4rem;
-      display: flex;
-      align-items: center;
-      gap: .8rem;
-    }
-    .hero-eyebrow::before {
-      content: '▶';
-      font-size: .6rem;
-      animation: blink-cursor 1.1s step-end infinite;
-    }
-    @keyframes blink-cursor { 50% { opacity: 0; } }
-
-    .hero-name {
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 7vw, 6rem);
-      font-weight: 900;
-      line-height: 1;
-      color: #fff;
-      letter-spacing: -1px;
-      margin-bottom: .5rem;
-    }
-    .hero-name .highlight {
-      color: var(--c-primary);
-      text-shadow: 0 0 40px var(--c-glow), 0 0 80px rgba(0,255,231,.15);
-    }
-
-    .hero-role {
-      font-family: var(--font-mono);
-      font-size: clamp(1rem, 2vw, 1.4rem);
-      color: var(--c-muted);
-      margin-bottom: 2rem;
-      min-height: 2rem;
-    }
-    .hero-role .typed-text { color: var(--c-secondary); }
-    .cursor {
-      display: inline-block;
-      width: 2px;
-      height: 1.1em;
-      background: var(--c-primary);
-      margin-left: 2px;
-      vertical-align: middle;
-      animation: blink-cursor 1s step-end infinite;
-    }
-
-    .hero-bio {
-      max-width: 600px;
-      color: var(--c-muted);
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 3rem;
-      border-left: 2px solid var(--c-primary);
-      padding-left: 1.2rem;
-    }
-
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-    /* STATUS BAR */
-    .status-bar {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-top: 4rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--c-border);
-    }
-    .status-item {
-      font-family: var(--font-mono);
-      font-size: .72rem;
-      color: var(--c-muted);
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-    }
-    .status-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--c-accent);
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-    .status-dot.warn { background: var(--c-warn); }
-    .status-dot.info { background: var(--c-secondary); }
-
-    /* ============================================================
-       BUTTONS
-    ============================================================ */
-    .btn {
-      font-family: var(--font-mono);
-      font-size: .8rem;
-      letter-spacing: 2px;
-      padding: .85rem 2rem;
-      border-radius: var(--radius);
-      border: 1px solid;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: .6rem;
-      transition: all var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-    .btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--c-primary);
-      transform: translateX(-100%);
-      transition: transform .3s ease;
-      z-index: -1;
-    }
-    .btn:hover::before { transform: translateX(0); }
-
-    .btn-primary {
-      border-color: var(--c-primary);
-      color: var(--c-primary);
-    }
-    .btn-primary:hover { color: var(--c-bg); box-shadow: 0 0 24px var(--c-glow); }
-
-    .btn-ghost {
-      border-color: var(--c-border);
-      color: var(--c-muted);
-    }
-    .btn-ghost::before { background: var(--c-surface2); }
-    .btn-ghost:hover { color: var(--c-text); border-color: var(--c-muted); }
-
-    /* ============================================================
-       TERMINAL CARD
-    ============================================================ */
-    .terminal {
-      background: var(--c-surface);
-      border: 1px solid var(--c-border);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 0 40px rgba(0,0,0,.5), 0 0 0 1px rgba(0,255,231,.04);
-    }
-    .terminal-bar {
-      background: var(--c-surface2);
-      padding: .7rem 1rem;
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-      border-bottom: 1px solid var(--c-border);
-    }
-    .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
-    .terminal-dot.red   { background: #ff5f57; }
-    .terminal-dot.yel   { background: #febc2e; }
-    .terminal-dot.grn   { background: #28c840; }
-    .terminal-label {
-      font-family: var(--font-mono);
-      font-size: .7rem;
-      color: var(--c-muted);
-      margin-left: auto;
-      letter-spacing: 1px;
-    }
-    .terminal-body {
-      padding: 1.5rem;
-      font-family: var(--font-mono);
-      font-size: .82rem;
-      line-height: 1.9;
-      color: var(--c-text);
-    }
-    .t-prompt { color: var(--c-accent); }
-    .t-cmd    { color: var(--c-primary); }
-    .t-out    { color: var(--c-muted); }
-    .t-key    { color: var(--c-warn); }
-    .t-val    { color: var(--c-secondary); }
-    .t-ok     { color: var(--c-accent); }
-    .t-err    { color: var(--c-danger); }
-
-    /* ============================================================
-       SKILL GRID
-    ============================================================ */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1rem;
-    }
-
-    .skill-card {
-      background: var(--c-surface);
-      border: 1px solid var(--c-border);
-      border-radius: var(--radius);
-      padding: 1.4rem;
-      transition: all var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-    .skill-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px; height: 100%;
-      background: var(--c-primary);
-      transform: scaleY(0);
-      transform-origin: bottom;
-      transition: transform var(--transition);
-    }
-    .skill-card:hover {
-      border-color: rgba(0,255,231,.3);
-      box-shadow: 0 0 20px rgba(0,255,231,.07);
-      transform: translateY(-3px);
-    }
-    .skill-card:hover::before { transform: scaleY(1); }
-
-    .skill-card-icon {
-      font-size: 1.8rem;
-      margin-bottom: .8rem;
-      display: block;
-    }
-    .skill-card-title {
-      font-family: var(--font-display);
-      font-size: .85rem;
-      font-weight: 700;
-      color: var(--c-primary);
-      letter-spacing: 1px;
-      margin-bottom: .4rem;
-    }
-    .skill-card-sub {
-      font-family: var(--font-mono);
-      font-size: .72rem;
-      color: var(--c-accent);
-      margin-bottom: .7rem;
-    }
-    .skill-card p {
-      font-size: .9rem;
-      color: var(--c-muted);
-      line-height: 1.6;
-    }
-
-    /* Progress bar */
-    .skill-bars { display: flex; flex-direction: column; gap: .5rem; margin-top: .8rem; }
-    .skill-bar-row { display: flex; align-items: center; gap: .7rem; }
-    .skill-bar-label {
-      font-family: var(--font-mono);
-      font-size: .68rem;
-      color: var(--c-muted);
-      width: 80px;
-      flex-shrink: 0;
-    }
-    .skill-bar-track {
-      flex: 1;
-      height: 3px;
-      background: var(--c-surface2);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .skill-bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--c-primary), var(--c-secondary));
-      border-radius: 2px;
       width: 0;
-      transition: width 1.2s cubic-bezier(.4,0,.2,1);
+      background: var(--primary);
+      transition: width 0.25s;
     }
-    .skill-bar-pct {
-      font-family: var(--font-mono);
-      font-size: .65rem;
-      color: var(--c-primary);
-      width: 28px;
-      text-align: right;
-    }
+    .desktop-nav a:hover,
+    .desktop-nav a.active { color: var(--primary); }
+    .desktop-nav a:hover::after,
+    .desktop-nav a.active::after { width: 100%; }
 
-    /* ============================================================
-       PORTFOLIO CARDS
-    ============================================================ */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.2rem;
+    .menu-btn {
+      border: 1px solid var(--border);
+      border-radius: 0.375rem;
+      padding: 0.4rem 0.75rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+      color: var(--primary);
+      background: transparent;
+      cursor: pointer;
     }
-
-    .project-card {
-      background: var(--c-surface);
-      border: 1px solid var(--c-border);
-      border-radius: 10px;
-      padding: 1.8rem;
-      transition: all var(--transition);
-      position: relative;
-      overflow: hidden;
-      display: flex;
+    .mobile-nav {
+      display: none;
       flex-direction: column;
+      gap: 1rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 1.25rem;
     }
-    .project-card::after {
-      content: '';
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      color: var(--muted-foreground);
+    }
+    .mobile-nav a:hover { color: var(--primary); }
+
+    /* Tablet and up: show desktop nav, hide hamburger/mobile menu. */
+    @media (min-width: 768px) {
+      .desktop-nav { display: flex; }
+      .menu-btn { display: none; }
+      .mobile-nav { display: none !important; }
+    }
+
+    /* ----------------------------------------------------------
+       HERO
+       Full-viewport intro: matrix canvas, orbs, scan beam,
+       status badge, glitch headline, CTA buttons and stats.
+       ---------------------------------------------------------- */
+    .hero {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: calc(100vh - 70px);
+      overflow: hidden;
+    }
+    .hero canvas {
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(0,255,231,.04) 0%, transparent 60%);
+      width: 100%;
+      height: 100%;
+      opacity: 0.18;
       pointer-events: none;
     }
-    .project-card:hover {
-      border-color: rgba(0,255,231,.3);
-      box-shadow: 0 8px 40px rgba(0,0,0,.4), 0 0 20px rgba(0,255,231,.08);
-      transform: translateY(-4px);
+    .hero .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
     }
-
-    .project-type {
-      font-family: var(--font-mono);
-      font-size: .65rem;
-      letter-spacing: 3px;
-      color: var(--c-accent);
-      text-transform: uppercase;
-      margin-bottom: .8rem;
+    .hero .orb-1 {
+      top: -10rem; right: -5rem;
+      width: 520px; height: 520px;
+      background: color-mix(in oklab, var(--primary) 12%, transparent);
     }
-    .project-title {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: .6rem;
-      line-height: 1.3;
+    .hero .orb-2 {
+      bottom: -5rem; left: -10%;
+      width: 420px; height: 420px;
+      background: color-mix(in oklab, var(--cyan) 10%, transparent);
     }
-    .project-desc {
-      color: var(--c-muted);
-      font-size: .9rem;
-      line-height: 1.6;
-      flex: 1;
-      margin-bottom: 1.2rem;
+    .hero .scan-beam {
+      position: absolute;
+      inset-x: 0;
+      top: 0;
+      height: 6rem;
+      background: linear-gradient(to bottom, color-mix(in oklab, var(--primary) 10%, transparent), transparent);
+      animation: scan 7s linear infinite;
+      pointer-events: none;
     }
-    .project-tags {
-      display: flex; flex-wrap: wrap; gap: .4rem;
-      margin-bottom: 1.2rem;
-    }
-    .tag {
-      font-family: var(--font-mono);
-      font-size: .68rem;
-      padding: .2rem .65rem;
-      border: 1px solid var(--c-border);
-      border-radius: 999px;
-      color: var(--c-muted);
-    }
-    .project-link {
-      font-family: var(--font-mono);
-      font-size: .75rem;
-      color: var(--c-primary);
+    .hero-content { position: relative; padding: 4rem 0; }
+    .status-badge {
       display: inline-flex;
       align-items: center;
-      gap: .4rem;
-      transition: gap var(--transition);
-      border-top: 1px solid var(--c-border);
-      padding-top: 1rem;
-      margin-top: auto;
+      gap: 0.75rem;
+      border: 1px solid color-mix(in oklab, var(--primary) 30%, transparent);
+      background: color-mix(in oklab, var(--surface) 70%, transparent);
+      border-radius: 9999px;
+      padding: 0.4rem 1rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--primary);
+      text-transform: uppercase;
     }
-    .project-link:hover { gap: .8rem; }
-
-    /* ============================================================
-       RESUME / CV
-    ============================================================ */
-    .timeline { position: relative; padding-left: 2rem; }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 1px;
-      height: 100%;
-      background: linear-gradient(180deg, var(--c-primary) 0%, transparent 100%);
-    }
-    .timeline-item {
-      position: relative;
-      padding-bottom: 2.5rem;
-    }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -2rem;
-      top: .35rem;
-      width: 8px; height: 8px;
+    .status-badge .dot {
+      width: 0.5rem; height: 0.5rem;
       border-radius: 50%;
-      background: var(--c-primary);
-      box-shadow: 0 0 10px var(--c-glow);
-      transform: translateX(-3.5px);
+      background: var(--primary);
+      animation: pulse-ring 2s infinite;
     }
-    .timeline-date {
-      font-family: var(--font-mono);
-      font-size: .7rem;
-      color: var(--c-accent);
-      letter-spacing: 2px;
-      margin-bottom: .3rem;
-    }
-    .timeline-title {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: .25rem;
-    }
-    .timeline-org {
-      font-size: .85rem;
-      color: var(--c-primary);
-      margin-bottom: .5rem;
-    }
-    .timeline-desc {
-      font-size: .9rem;
-      color: var(--c-muted);
-      line-height: 1.6;
-    }
-
-    /* CV Info Grid */
-    .cv-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    .cv-chip {
-      background: var(--c-surface);
-      border: 1px solid var(--c-border);
-      border-radius: var(--radius);
-      padding: 1rem 1.2rem;
-      transition: border-color var(--transition);
-    }
-    .cv-chip:hover { border-color: rgba(0,255,231,.3); }
-    .cv-chip-label {
-      font-family: var(--font-mono);
-      font-size: .65rem;
-      color: var(--c-muted);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: .4rem;
-    }
-    .cv-chip-value {
-      font-size: .95rem;
-      color: var(--c-text);
-      font-weight: 600;
-    }
-
-    /* Badge row */
-    .badge-row { display: flex; flex-wrap: wrap; gap: .5rem; }
-    .badge {
-      font-family: var(--font-mono);
-      font-size: .72rem;
-      padding: .3rem .8rem;
-      border-radius: 999px;
-      border: 1px solid rgba(0,255,231,.4);
-      color: var(--c-primary);
-      background: rgba(0,255,231,.06);
-      transition: all var(--transition);
-    }
-    .badge:hover {
-      background: rgba(0,255,231,.12);
-      box-shadow: 0 0 10px rgba(0,255,231,.2);
-    }
-
-    /* ============================================================
-       ANALYTICS
-    ============================================================ */
-    .analytics-wrap {
-      background: var(--c-surface);
-      border: 1px solid var(--c-border);
-      border-radius: 10px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .analytics-header {
-      display: flex;
-      align-items: center;
-      gap: .8rem;
-      margin-bottom: 1rem;
-    }
-    .analytics-title {
-      font-family: var(--font-display);
-      font-size: .85rem;
-      color: var(--c-primary);
-      letter-spacing: 1px;
-    }
-    .analytics-img {
-      width: 100%;
-      border-radius: var(--radius);
-      border: 1px solid var(--c-border);
-    }
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-      gap: 1rem;
-    }
-    .stat-card {
-      background: var(--c-surface);
-      border: 1px solid var(--c-border);
-      border-radius: var(--radius);
-      padding: 1.2rem;
-      text-align: center;
-      transition: all var(--transition);
-    }
-    .stat-card:hover {
-      border-color: rgba(0,255,231,.3);
-      transform: translateY(-2px);
-    }
-    .stat-number {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
+    .hero h1 {
+      font-family: "Orbitron", "Space Grotesk", sans-serif;
+      font-size: clamp(2.6rem, 8vw, 6rem);
+      line-height: 0.95;
       font-weight: 900;
-      color: var(--c-primary);
-      text-shadow: 0 0 20px var(--c-glow);
+      letter-spacing: -0.04em;
+      margin: 1.5rem 0 0;
     }
-    .stat-label {
-      font-family: var(--font-mono);
-      font-size: .68rem;
-      color: var(--c-muted);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-top: .2rem;
+    .hero .subtitle {
+      margin-top: 1.5rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: clamp(0.9rem, 2vw, 1.15rem);
+      color: var(--cyan);
     }
-
-    /* ============================================================
-       BLOG
-    ============================================================ */
-    .blog-coming {
-      background: var(--c-surface);
-      border: 1px solid var(--c-border);
-      border-radius: 10px;
-      padding: 3rem 2rem;
-      text-align: center;
+    .hero .lead {
+      margin-top: 1.5rem;
+      max-width: 42rem;
+      line-height: 1.7;
+      color: var(--muted-foreground);
     }
-    .blog-coming-icon {
-      font-family: var(--font-display);
-      font-size: 3rem;
-      color: var(--c-primary);
-      opacity: .3;
-      margin-bottom: 1rem;
-      letter-spacing: 4px;
-    }
-    .blog-coming h3 {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      color: #fff;
-      margin-bottom: .5rem;
-    }
-    .blog-coming p {
-      color: var(--c-muted);
-      font-size: .95rem;
-      max-width: 420px;
-      margin: 0 auto;
-    }
-
-    /* ============================================================
-       CONTACT
-    ============================================================ */
-    .contact-layout {
+    .hero-actions { margin-top: 2.25rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .hero-stats {
+      margin-top: 3rem;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      max-width: 48rem;
     }
-    .contact-info { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-item {
+    @media (min-width: 640px) { .hero-stats { grid-template-columns: repeat(4, 1fr); } }
+    .hero-stats .stat { padding: 1rem; }
+    .hero-stats dt { color: var(--muted-foreground); font-size: 0.68rem; letter-spacing: 0.1em; }
+    .hero-stats dd { margin: 0.4rem 0 0; color: var(--primary); font-family: "JetBrains Mono", monospace; font-size: 0.78rem; }
+
+    /* ----------------------------------------------------------
+       TICKER
+       Infinite marquee strip with key skills separated by
+       diamond markers. The track is duplicated by JS so the
+       marquee loop looks seamless.
+       ---------------------------------------------------------- */
+    .ticker {
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: color-mix(in oklab, var(--surface) 60%, transparent);
+      padding: 0.75rem 0;
+    }
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      gap: 2.5rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.24em;
+      white-space: nowrap;
+      color: var(--muted-foreground);
+      animation: marquee 26s linear infinite;
+    }
+    .ticker-track span { display: flex; align-items: center; gap: 2.5rem; }
+    .ticker-track .diamond { color: var(--primary); }
+
+    /* ----------------------------------------------------------
+       SECTIONS / CARDS
+       Generic section spacing plus responsive 2/3-column grids
+       used by "Defense", "Technology", "Labs" and "Contact".
+       ---------------------------------------------------------- */
+    section { padding: 5rem 0; border-top: 1px solid color-mix(in oklab, var(--primary) 10%, transparent); }
+    section > .container > p {
+      margin-top: 1.25rem;
+      max-width: 42rem;
+      line-height: 1.7;
+      color: var(--muted-foreground);
+    }
+
+    .grid-3 {
+      margin-top: 2.5rem;
+      display: grid;
+      gap: 1.25rem;
+    }
+    @media (min-width: 768px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+
+    .grid-2 {
+      margin-top: 2.5rem;
+      display: grid;
+      gap: 1.25rem;
+    }
+    @media (min-width: 768px) { .grid-2 { grid-template-columns: repeat(2, 1fr); } }
+
+    /* Card: combines panel + corner brackets; holds a kicker
+       label, title, description, tags and an optional link. */
+    .card {
+      composes: panel corner-brackets;
+      padding: 1.5rem;
+      height: 100%;
+    }
+    .card .kicker {
+      margin-bottom: 0.5rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+    .card h3 {
+      margin: 0;
+      font-family: "Orbitron", "Space Grotesk", sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      transition: color 0.25s;
+    }
+    .card:hover h3 { color: var(--primary); }
+    .card p {
+      margin: 0.75rem 0 0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--muted-foreground);
+    }
+    .card .tags { margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .card .link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--blue);
+      transition: transform 0.2s;
+    }
+    .card .link:hover { transform: translateX(4px); }
+    .card .progress {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--amber);
+    }
+    .card .progress .pulse { width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--amber); animation: blink 1.5s infinite; }
+
+    /* ----------------------------------------------------------
+       TERMINAL
+       Fake terminal window (traffic-light header + body) used in
+       the "Profile" section. Lines are typed by JS.
+       ---------------------------------------------------------- */
+    .terminal { margin-top: 2rem; }
+    .terminal-header {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      padding: 1rem 1.2rem;
-      background: var(--c-surface);
-      border: 1px solid var(--c-border);
-      border-radius: var(--radius);
-      text-decoration: none;
-      transition: all var(--transition);
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      background: color-mix(in oklab, var(--surface-2) 50%, transparent);
+      padding: 0.75rem 1rem;
     }
-    .contact-item:hover {
-      border-color: rgba(0,255,231,.3);
-      background: rgba(0,255,231,.04);
-      transform: translateX(4px);
+    .terminal-header .dot { width: 0.65rem; height: 0.65rem; border-radius: 50%; }
+    .terminal-header .dot.red { background: color-mix(in oklab, var(--destructive, oklch(0.65 0.24 22)) 80%, transparent); }
+    .terminal-header .dot.yellow { background: color-mix(in oklab, var(--amber) 80%, transparent); }
+    .terminal-header .dot.green { background: color-mix(in oklab, var(--primary) 80%, transparent); }
+    .terminal-header .title {
+      margin-left: 0.75rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--muted-foreground);
     }
-    .contact-item-icon {
-      width: 36px; height: 36px;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(0,255,231,.1);
-      border: 1px solid rgba(0,255,231,.2);
-      border-radius: var(--radius);
-      font-size: 1rem;
-      flex-shrink: 0;
+    .terminal-body {
+      padding: 1.25rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.82rem;
+      line-height: 1.8;
+      min-height: 180px;
     }
-    .contact-item-body {}
-    .contact-item-label {
-      font-family: var(--font-mono);
-      font-size: .65rem;
-      color: var(--c-muted);
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    .terminal-body .line { margin: 0.25rem 0; }
+    .terminal-body .prompt { color: var(--primary); }
+    .terminal-body .key { color: var(--cyan); }
+    .terminal-body .val { color: var(--primary); }
+    .terminal-body .ok { color: var(--amber); }
+
+    /* ----------------------------------------------------------
+       TIMELINE
+       Vertical career timeline with glowing bullets on a
+       left-aligned border.
+       ---------------------------------------------------------- */
+    .timeline { margin-top: 2.5rem; border-left: 1px solid color-mix(in oklab, var(--primary) 30%, transparent); padding-left: 1.75rem; }
+    .timeline article { position: relative; }
+    .timeline .bullet {
+      position: absolute;
+      top: 0.5rem;
+      left: -2.1rem;
+      width: 0.65rem; height: 0.65rem;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 16px var(--primary);
     }
-    .contact-item-value {
-      font-size: .9rem;
-      color: var(--c-text);
+    .timeline .meta {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      color: var(--primary);
+    }
+    .timeline h3 { margin: 0.5rem 0 0; font-family: "Orbitron", sans-serif; font-size: 1.15rem; }
+    .timeline .role { margin: 0.25rem 0 0; font-size: 0.9rem; color: var(--cyan); }
+    .timeline .desc { margin: 0.75rem 0 0; max-width: 42rem; font-size: 0.9rem; color: var(--muted-foreground); }
+
+    /* ----------------------------------------------------------
+       EDUCATION
+       Single education card + language proficiency tags.
+       ---------------------------------------------------------- */
+    .education-card { margin-top: 2rem; padding: 1.75rem; }
+    .education-card .meta { font-family: "JetBrains Mono", monospace; font-size: 0.68rem; letter-spacing: 0.16em; color: var(--primary); }
+    .education-card h3 { margin: 0.5rem 0 0; font-family: "Orbitron", sans-serif; font-size: 1.15rem; }
+    .education-card .school { margin: 0.25rem 0 0; font-size: 0.9rem; color: var(--cyan); }
+    .education-card p { margin: 0.75rem 0 0; max-width: 42rem; font-size: 0.9rem; color: var(--muted-foreground); }
+    .lang-tags { margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    /* ----------------------------------------------------------
+       CONTACT
+       Contact section with a blurred magenta orb background and
+       a grid of clickable contact cards (email/social/links).
+       ---------------------------------------------------------- */
+    .contact { position: relative; overflow: hidden; }
+    .contact .orb {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 720px; height: 420px;
+      border-radius: 50%;
+      background: color-mix(in oklab, var(--magenta) 8%, transparent);
+      filter: blur(130px);
+      pointer-events: none;
+    }
+    .contact-card { display: block; padding: 1.5rem; }
+    .contact-card .label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      color: var(--primary);
+    }
+    .contact-card .value {
+      margin-top: 0.5rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.85rem;
+      word-break: break-all;
     }
 
-    .contact-form { display: flex; flex-direction: column; gap: .9rem; }
-    .form-group { display: flex; flex-direction: column; gap: .35rem; }
-    .form-label {
-      font-family: var(--font-mono);
-      font-size: .68rem;
-      color: var(--c-muted);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-    .form-input {
-      background: var(--c-surface);
-      border: 1px solid var(--c-border);
-      border-radius: var(--radius);
-      padding: .8rem 1rem;
-      color: var(--c-text);
-      font-family: var(--font-mono);
-      font-size: .85rem;
-      outline: none;
-      transition: border-color var(--transition);
-    }
-    .form-input:focus { border-color: var(--c-primary); }
-    .form-input::placeholder { color: var(--c-muted); }
-    textarea.form-input { min-height: 120px; resize: vertical; }
-
-    /* ============================================================
+    /* ----------------------------------------------------------
        FOOTER
-    ============================================================ */
-    footer {
-      border-top: 1px solid var(--c-border);
-      padding: 2.5rem;
-      text-align: center;
-    }
-    .footer-logo {
-      font-family: var(--font-display);
-      font-size: .9rem;
-      color: var(--c-primary);
-      letter-spacing: 4px;
-      margin-bottom: .8rem;
-    }
-    .footer-links {
+       Bottom bar with brand mark and copyright.
+       ---------------------------------------------------------- */
+    footer { border-top: 1px solid var(--border); padding: 2rem 0; }
+    .footer-inner {
       display: flex;
-      justify-content: center;
-      gap: 1.5rem;
       flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-    .footer-link {
-      font-family: var(--font-mono);
-      font-size: .72rem;
-      color: var(--c-muted);
-      letter-spacing: 1px;
-      transition: color var(--transition);
-    }
-    .footer-link:hover { color: var(--c-primary); }
-    .footer-copy {
-      font-family: var(--font-mono);
-      font-size: .68rem;
-      color: var(--c-muted);
-      opacity: .5;
+      justify-content: space-between;
+      gap: 1rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      color: var(--muted-foreground);
     }
 
-    /* ============================================================
-       GLITCH EFFECT
-    ============================================================ */
-    .glitch {
+    /* ----------------------------------------------------------
+       F. KEYFRAMES (ANIMATIONS)
+       All animation definitions used across the page.
+       ---------------------------------------------------------- */
+    @keyframes grid-drift { to { background-position: 0 60px, 60px 0; } }
+    @keyframes scan {
+      0% { transform: translateY(-10%); opacity: 0; }
+      35% { opacity: 0.8; }
+      100% { transform: translateY(1000%); opacity: 0; }
+    }
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      42% { opacity: 0.65; }
+      44% { opacity: 1; }
+      61% { opacity: 0.4; }
+      63% { opacity: 1; }
+    }
+    @keyframes glitch-x {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(-3px, 1px); }
+      40% { transform: translate(3px, -1px); }
+      60% { transform: translate(-2px, -2px); }
+      80% { transform: translate(2px, 2px); }
+    }
+    @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 55%, transparent); }
+      70% { box-shadow: 0 0 0 10px transparent; }
+      100% { box-shadow: 0 0 0 0 transparent; }
+    }
+    @keyframes sweep { 0% { transform: translateX(-120%); } 100% { transform: translateX(220%); } }
+
+    /* ----------------------------------------------------------
+       NAME GLITCH EFFECT ("SANTOS")
+       Exact port of index.html's .glitch implementation
+       (same clip-paths, same keyframe timing, same colors).
+       Kept under its own .name-glitch class name so it doesn't
+       collide with the unrelated .glitch hover effect already
+       used on the logo and hero <h1>.
+       ---------------------------------------------------------- */
+    .name-glitch {
       position: relative;
       display: inline-block;
     }
-    .glitch::before,
-    .glitch::after {
+    .name-glitch::before,
+    .name-glitch::after {
       content: attr(data-text);
       position: absolute;
       inset: 0;
       pointer-events: none;
+      background: none;
+      -webkit-text-fill-color: currentColor;
+      /* Rest state: invisible. Without this, when the animation is
+         paused (prefers-reduced-motion, or screenshot engines that
+         freeze animations) the browser falls back to opacity:1 and
+         the red/blue layers stick on screen — that was exactly the
+         "static glitch" issue reported. */
+      opacity: 0;
     }
-    .glitch::before {
-      color: var(--c-danger);
+    .name-glitch::before {
+      color: var(--glitch-red);
       clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
       animation: glitch-1 4s infinite linear;
     }
-    .glitch::after {
-      color: var(--c-secondary);
+    .name-glitch::after {
+      color: var(--glitch-blue);
       clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
       animation: glitch-2 4s infinite linear;
     }
     @keyframes glitch-1 {
-      0%,90%,100% { transform: translate(0); opacity: 0; }
-      91%          { transform: translate(-4px, 1px); opacity: .8; }
-      93%          { transform: translate(4px, -1px); opacity: .8; }
-      95%          { transform: translate(-2px, 2px); opacity: .8; }
-      97%          { transform: translate(0); opacity: 0; }
+      0%, 90%, 100% { transform: translate(0); opacity: 0; }
+      91% { transform: translate(-4px, 1px); opacity: .8; }
+      93% { transform: translate(4px, -1px); opacity: .8; }
+      95% { transform: translate(-2px, 2px); opacity: .8; }
+      97% { transform: translate(0); opacity: 0; }
     }
     @keyframes glitch-2 {
-      0%,90%,100% { transform: translate(0); opacity: 0; }
-      92%          { transform: translate(4px, 1px); opacity: .8; }
-      94%          { transform: translate(-4px, -1px); opacity: .8; }
-      96%          { transform: translate(2px, 2px); opacity: .8; }
-      98%          { transform: translate(0); opacity: 0; }
+      0%, 90%, 100% { transform: translate(0); opacity: 0; }
+      92% { transform: translate(4px, 1px); opacity: .8; }
+      94% { transform: translate(-4px, -1px); opacity: .8; }
+      96% { transform: translate(2px, 2px); opacity: .8; }
+      98% { transform: translate(0); opacity: 0; }
     }
 
-    /* ============================================================
-       RESPONSIVE
-    ============================================================ */
-    @media (max-width: 768px) {
-      header { padding: 0 1.2rem; }
-      nav { display: none; }
-      nav.open {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: var(--nav-h);
-        left: 0; right: 0;
-        background: rgba(3,7,18,.97);
-        padding: 1rem;
-        border-bottom: 1px solid var(--c-border);
-        gap: .3rem;
-        z-index: 800;
-      }
-      .nav-toggle { display: block; }
-      main { padding: 2rem 1rem 5rem; }
-      .contact-layout { grid-template-columns: 1fr; }
-      .hero-name { font-size: clamp(2.4rem, 10vw, 4rem); }
-    }
-
-    /* ============================================================
-       UTILITY
-    ============================================================ */
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-    @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
-
-    .mt-1 { margin-top: 1rem; }
-    .mt-2 { margin-top: 2rem; }
-    .mt-3 { margin-top: 3rem; }
-
-    /* scroll bar */
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--c-bg); }
-    ::-webkit-scrollbar-thumb { background: var(--c-border); border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: rgba(0,255,231,.3); }
   </style>
 </head>
 <body>
-
-<!-- ===== PARTICLE CANVAS ===== -->
-<canvas id="bg-canvas"></canvas>
-
-<div class="page-wrap">
-
-  <!-- ===== HEADER ===== -->
-  <header id="header">
-    <div class="logo">
-      <span class="logo-bracket">[</span>
-      SANT29
-      <span class="logo-bracket">]</span>
-      <span class="logo-dot"></span>
+  <!-- ==========================================================
+       ===== HTML =====
+       ==========================================================
+       HEADER / NAVIGATION
+       Sticky header with logo, desktop nav links, a hamburger
+       button for mobile, and a collapsible mobile nav panel.
+       ========================================================== -->
+  <header>
+    <div class="container header-inner">
+      <a href="#home" class="logo glitch"><span class="text-muted">[</span>SANT29<span class="text-muted">]</span></a>
+      <nav class="desktop-nav" id="desktop-nav">
+        <a href="#about">PERFIL</a>
+        <a href="#security">DEFESA</a>
+        <a href="#technology">TECNOLOGIA</a>
+        <a href="#projects">LABS</a>
+        <a href="#experience">TRAJETÓRIA</a>
+        <a href="#education">FORMAÇÃO</a>
+        <a href="#contact">CONTATO</a>
+      </nav>
+      <button class="menu-btn" id="menu-btn" aria-label="Abrir menu">☰</button>
     </div>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">☰</button>
-    <nav id="main-nav">
-      <a class="nav-link active" href="#home"       data-index="">HOME</a>
-      <a class="nav-link"        href="#skills"     data-index="">SKILLS</a>
-      <a class="nav-link"        href="#portfolio"  data-index="">PORTFOLIO</a>
-      <a class="nav-link"        href="#resume"     data-index="">RESUME</a>
-      <a class="nav-link"        href="#analytics"  data-index="">ANALYTICS</a>
-      <a class="nav-link"        href="#blog"       data-index="">BLOG</a>
-      <a class="nav-link"        href="#contact"    data-index="">CONTACT</a>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="#about">PERFIL</a>
+      <a href="#security">DEFESA</a>
+      <a href="#technology">TECNOLOGIA</a>
+      <a href="#projects">LABS</a>
+      <a href="#experience">TRAJETÓRIA</a>
+      <a href="#education">FORMAÇÃO</a>
+      <a href="#contact">CONTATO</a>
     </nav>
   </header>
 
-  <!-- ===== MAIN ===== -->
   <main>
-
-    <!-- ── HOME ── -->
-    <section id="home">
-      <div class="hero-eyebrow">INITIALIZING SECURE CONNECTION</div>
-
-      <h1 class="hero-name">
-        GUILHERME<br>
-        <span class="highlight glitch" data-text="SANTOS">SANTOS</span>
-      </h1>
-
-      <p class="hero-role">
-        <span class="typed-text" id="typed-target"></span><span class="cursor"></span>
-      </p>
-
-      <p class="hero-bio">
-       Cybersecurity Technician &amp; specializing in software and hardware automation, cybersecurity, and Junior Full Stack Developer. 
-        Guarulhos, SP — Brazil.
-        Building software that streamlines processes and optimizes time securely and efficiently, based on ethical hacking principles,
-        infrastructure automation, and clean code. Former SENAI graduate seeking career advancement and international opportunities in large technology companies.
-      </p>
-
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#portfolio">
-          <span>⬡</span> VIEW PROJECTS
-        </a>
-        <a class="btn btn-ghost" href="#contact">
-          <span>→</span> GET IN TOUCH
-        </a>
-      </div>
-
-      <div class="status-bar">
-        <div class="status-item">
-          <span class="status-dot"></span>AVAILABLE FOR OPPORTUNITIES
+    <!-- ========================================================
+         SECTION 1 — HERO (id="home")
+         Full-height intro: matrix rain canvas, animated grid,
+         glow orbs, scan beam, status badge, glitch name,
+         subtitle, lead paragraph, CTA buttons and quick stats.
+         ======================================================== -->
+    <section class="hero" id="home">
+      <canvas id="matrix" aria-hidden="true"></canvas>
+      <div class="cyber-grid" style="opacity: 0.7;"></div>
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="scan-beam"></div>
+      <div class="container hero-content">
+        <div class="reveal">
+          <div class="status-badge"><span class="dot"></span>Cybersecurity Analyst & Cyber-Systems Technician</div>
         </div>
-        <div class="status-item">
-          <span class="status-dot warn"></span>SENAI GRADUATION: DEC 2026
+        <div class="reveal" style="transition-delay: 90ms;">
+          <h1 class="glitch">GUILHERME<br><span class="text-neon glow-text name-glitch" data-text="SANTOS">SANTOS</span></h1>
         </div>
-        <div class="status-item">
-          <span class="status-dot info"></span>LOCATION: GUARULHOS, BR
+        <div class="reveal" style="transition-delay: 160ms;">
+          <p class="subtitle">Cybersecurity · automatic systems · Network Security · Database & Clound </p>
+        </div>
+        <div class="reveal" style="transition-delay: 220ms;">
+          <p class="lead">Cyber-Systems Technician focused on Cybersecurity, Network Security, Infrastructure, and Security Automation. Develops Python-based solutions for automation, environment analysis, industrial systems integration (including PLCs), and technical troubleshooting, applying security by design principles and supporting the reliability of interconnected systems.</p>
+        </div>
+        <div class="reveal hero-actions" style="transition-delay: 280ms;">
+          <a href="#projects" class="btn btn-primary"><span class="sweep"></span><span>VER LABS</span></a>
+          <a href="https://github.com/GuilhermeSANT29" target="_blank" rel="noopener" class="btn btn-outline cyan">GITHUB</a>
+          <a href="https://linkedin.com/in/gui-santos05092008" target="_blank" rel="noopener" class="btn btn-outline magenta">LINKEDIN</a>
+        </div>
+        <div class="reveal hero-stats" style="transition-delay: 340ms;">
+          <div class="panel stat"><dt>STATUS</dt><dd>OPEN TO WORK</dd></div>
+          <div class="panel stat"><dt>LOCAL</dt><dd>GUARULHOS, SP</dd></div>
         </div>
       </div>
     </section>
 
-    <!-- ── SKILLS ── -->
-    <section id="skills">
-      <div class="section-label">// TECHNICAL SKILLS </div>
-      <h2 class="section-title"> ABOUT <span>ME</span></h2>
-
-      <div class="two-col" style="gap:2rem; margin-bottom:2rem;">
-        <div class="terminal">
-          <div class="terminal-bar">
-            <span class="terminal-dot red"></span>
-            <span class="terminal-dot yel"></span>
-            <span class="terminal-dot grn"></span>
-            <span class="terminal-label">SANT</span>
-          </div>
-          <div class="terminal-body">
-            <br>
-            <div><span class="t-prompt">$</span> <span class="t-cmd">professional skills</span></div>
-            <div><span class="t-key">"certificate"</span>: <span class="t-val">"Cybersystems for automation &amp; cybersecurity"</span></div>
-            <div><span class="t-key">"focus"</span>: <span class="t-val">"Development of automated and secure systems for Big Tech."</span></div>
-            <div><span class="t-key">"status"</span>: <span class="t-ok">"open to work - I look for opportunities"</span></div>
-            <br>
-            <div><span class="t-prompt">$</span> <span class="t-cmd">top-skills</span></div>
-            <div class="t-out">Scanning competencies...</div>
-            <div><span class="t-ok">Dev</span> Code versioning - GIT </div>
-            <div><span class="t-ok">Back-End</span> APIs - Integration </div>
-            <div><span class="t-ok">Front-End</span> Web Site </div>
-            <div><span class="t-ok">protection</span> DataBase - MySQL & MySQL SEVER</div>
-            <div><span class="t-ok">protection</span> Computer Networks </div>
-            <div><span class="t-ok">Clound</span> Google Clound - APIs </div>
-            <div><span class="t-ok">protection</span> cybersecurity</div>
-            <div><span class="t-ok">Hardware</span> PLCs & Arduino - automation</div>
-            <div class="t-out"> skills enumerated.</div>
-          </div>
-        </div>
-
-        <div>
-          <p style="color:var(--c-muted); line-height:1.8; margin-bottom:1.5rem; font-size:.95rem;">
-            Versatile technician with a solid foundation in various technological areas.
-            Knowledgeable in hardware, industrial PLCs, robots, cloud infrastructure and databases, software development, and information security. 
-            Passionate about automation and building things that truly optimize tasks and save time.
-          </p>
-          <div class="skill-bars">
-            <div class="skill-bar-row">
-              <span class="skill-bar-label">Python</span>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="80"></div></div>
-              <span class="skill-bar-pct">80%</span>
-            </div>
-            <div class="skill-bar-row">
-              <span class="skill-bar-label">C# / C++</span>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="90"></div></div>
-              <span class="skill-bar-pct">90%</span>
-            </div>
-            <div class="skill-bar-row">
-              <span class="skill-bar-label">JavaScript</span>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="40"></div></div>
-              <span class="skill-bar-pct">40%</span>
-            </div>
-            <div class="skill-bar-row">
-              <span class="skill-bar-label">Java</span>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="20"></div></div>
-              <span class="skill-bar-pct">20%</span>
-            </div>
-            <div class="skill-bar-row">
-              <span class="skill-bar-label">HTML / CSS</span>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="50"></div></div>
-              <span class="skill-bar-pct">50%</span>
-            </div>
-            <div class="skill-bar-row">
-              <span class="skill-bar-label">MySQL</span>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="70"></div></div>
-              <span class="skill-bar-pct">70%</span>
-            </div>
-            <div class="skill-bar-row">
-              <span class="skill-bar-label">Networking</span>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="60"></div></div>
-              <span class="skill-bar-pct">60%</span>
-            </div>
-          </div>
-        </div>
+    <!-- ========================================================
+         TICKER (SKILLS MARQUEE)
+         Infinite horizontal strip of key skill keywords.
+         The track is duplicated by JS for a seamless loop.
+         ======================================================== -->
+    <div class="ticker">
+      <div class="ticker-track" id="ticker-track">
+        <span><span class="diamond">◆</span>DEV BACK-END</span>
+        <span><span class="diamond">◆</span>BLUE TEAM</span>
+        <span><span class="diamond">◆</span>INFRASTRUCTURE</span>
+        <span><span class="diamond">◆</span>NETWORK SECURITY</span>
+        <span><span class="diamond">◆</span>INDUSTRIAL AUTOMATION</span>
+        <span><span class="diamond">◆</span>PYTHON AUTOMATION</span>
+        <span><span class="diamond">◆</span>LOG ANALYSIS</span>
+        <span><span class="diamond">◆</span>VULNERABILITY MANAGEMENT</span>
       </div>
+    </div>
 
-         </div>
-          <article class="skill-card">
-          <span class="skill-card-icon">💻</span>
-          <div class="skill-card-title">SOFTWARE DEVELOPMENT</div>
-          <div class="skill-card-sub">Python · C# · C++ · Java among others...</div>
-          <p>Building robust software solutions with emphasis on performance, maintainability, and clean code principles.</p>
-         </article>
-
-         <article class="skill-card">
-          <span class="skill-card-icon">⚙️</span>
-          <div class="skill-card-title">AUTOMATION</div>
-          <div class="skill-card-sub">Process Integration · maintenance </div>
-          <p>End-to-end automation solutions to eliminate manual errors, accelerate delivery cycles, and integrate systems.</p>
-          </article>
-
-          <article class="skill-card">
-          <span class="skill-card-icon">⚡</span>
-          <div class="skill-card-title">ELECTRICAL &amp; ELECTRONICS</div>
-          <div class="skill-card-sub">Hardware · PLCs · Industrial Control</div>
-          <p>Industrial automation projects, PLC programming, and electrical system integration with a focus on safety and efficiency.</p>
-          </article>
-       
-          <article class="skill-card">
-          <span class="skill-card-icon">🔐</span>
-          <div class="skill-card-title">CYBERSECURITY</div>
-          <div class="skill-card-sub">Data Protection · Risk Analysis </div>
-          <p>Implementation of security controls, threat modeling, vulnerability assessment and adherence to industry security standards.</p>
-          </article>
-
-          <article class="skill-card">
-          <span class="skill-card-icon">☁️</span>
-          <div class="skill-card-title">CLOUD COMPUTING</div>
-          <div class="skill-card-sub">Google Cloud </div>
-          <p>Design and deployment of scalable, resilient cloud infrastructures with a security-first approach and automation APIs.</p>
-          </article>
-
-         <article class="skill-card">
-          <span class="skill-card-icon">🗄️</span>
-          <div class="skill-card-title">DATABASE</div>
-          <div class="skill-card-sub">MySQL · SQL Server · Oracle</div>
-          <p>Data modeling, query optimization, stored procedures, and data governance frameworks for operational reliability.</p>
-          </article>
-
-          <article class="skill-card">
-          <span class="skill-card-icon">🔗</span>
-          <div class="skill-card-title">NETWORKING</div>
-          <div class="skill-card-sub">Architecture · Protocols · Troubleshooting</div>
-          <p>Network design, administration, and troubleshooting across complex multi-tier enterprise infrastructure environments.</p>
-          </article>
-
-         <article class="skill-card">
-          <span class="skill-card-icon">🤖</span>
-          <div class="skill-card-title">ARTIFICIAL INTELLIGENCE</div>
-          <div class="skill-card-sub">Python · ML · Prompts </div>
-          <p>Applied ML fundamentals, prompt engineering, and AI-assisted decision support systems with ethical considerations.</p>
-          </article>
-         </div>
-    </section>
-
-    <!-- ── PORTFOLIO ── -->
-    <section id="portfolio">
-      <div class="section-label"></div>
-      <h2 class="section-title">Portfolio &amp; <span>Projects</span></h2>
-
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-type">PYTHON · BACKEND</div>
-          <h3 class="project-title">Industrial Monitoring System</h3>
-          <p class="project-desc">
-            A Python-based industrial monitoring system for recording employees, machine operators, machines, sensors, and maintenance, featuring:
-            database integration, automated data management, and reporting.
-            Developed for operational environments.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">Industrial IoT</span>
-            <span class="tag">Automation</span>
-          </div>
-          <a class="project-link" href="https://github.com/GuilhermeSANT29/DataBase/tree/main/projeto%20do%20falabella" target="_blank" rel="noopener">
-            View on GitHub ⟶
-          </a>
+    <!-- ========================================================
+         SECTION 2 — PROFILE (id="about")
+         Short intro text + a fake terminal that "types out"
+         a profile summary (handled by JS below).
+         ======================================================== -->
+    <section id="about">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">// PROFILE</div>
+          <h2 class="section-title">Security first. <span class="text-neon glow-text">Systems minded.</span></h2>
+          <p>Base técnica que combina cibersistemas, redes, desenvolvimento, bancos de dados, automação e infraestrutura. Para Cybersecurity, o foco está em compreender como sistemas e redes funcionam, identificar riscos e aplicar controles e automações de forma objetiva.</p>
         </div>
-
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-type">PYTHON · BACKEND</div>
-          <h3 class="project-title">Projeto IoT</h3>
-          <p class="project-desc">
-           This project focuses on the development of an intelligent monitoring system utilizing the ESP8266 microcontroller,
-            integrated with a REST API, a database, and Google Sheets for real-time storage and visualization.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">Google Clound</span>
-            <span class="tag">Google APIs</span>
-            <span class="tag">Google Sheets</span>
-            <span class="tag">Automation</span>
+        <div class="reveal terminal panel scanlines" style="transition-delay: 120ms;">
+          <div class="terminal-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="title">SANT29</span>
           </div>
-          
-          <a class="project-link" href="https://github.com/GuilhermeSANT29/Projeto-Integrador---IoT" target="_blank" rel="noopener">
-            View on GitHub ⟶
-          </a>
+          <div class="terminal-body" id="terminal-body">
+            <div class="caret"></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ── RESUME ── -->
-    <section id="resume">
-      <div class="section-label"></div>
-      <h2 class="section-title">Education &amp; <span>Experience</span></h2>
-
-      <div class="two-col">
-        <div>
-          <h3 style="font-family:var(--font-display);font-size:.85rem;color:var(--c-muted);letter-spacing:3px;margin-bottom:1.5rem;">EDUCATION</h3>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-date">FEB 2025 — DEC 2026</div>
-              <div class="timeline-title">Technician in Cybersystems</div>
-              <div class="timeline-org">SENAI — Guarulhos, Brazil</div>
-              <p class="timeline-desc">
-                Comprehensive technical program covering cybersecurity, networking,
-                software development, industrial automation, cloud computing,
-                and database administration.
-              </p>
-            </div>
+    <!-- ========================================================
+         SECTION 3 — CYBER DEFENSE (id="security")
+         3-column grid of six defense skill cards: SOC operations,
+         blue team, incident response, network defense, system
+         defense and vulnerability management.
+         ======================================================== -->
+    <section id="security">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">// CYBER DEFENSE</div>
+          <h2 class="section-title">Cyber Defense <span class="text-neon glow-text">Skills</span></h2>
+          <p>defesa cibernética, monitoramento, análise, resposta a incidentes e segurança de redes e sistemas.</p>
+        </div>
+        <div class="grid-3">
+          <div class="reveal panel corner-brackets card" style="transition-delay: 70ms;">
+            <div class="kicker">01 / SOC Operations</div>
+            <h3>Security Monitoring</h3>
+            <p>Monitoramento de eventos, triagem, análise de alertas, correlação de evidências e identificação inicial de comportamentos suspeitos.</p>
+            <div class="tags"><span class="tag">SOC</span><span class="tag">Alert Triage</span><span class="tag">Log Analysis</span><span class="tag">Event Monitoring</span></div>
+            <span class="progress"><span class="pulse"></span>EM PROGRESSO</span>
+          </div>
+          <div class="reveal panel corner-brackets card" style="transition-delay: 140ms;">
+            <div class="kicker">02 / Blue Team</div>
+            <h3>Threat Detection &amp; Defense</h3>
+            <p>Fundamentos de detecção, prevenção, investigação e melhoria contínua dos controles defensivos de um ambiente.</p>
+            <div class="tags"><span class="tag">Blue Team</span><span class="tag">Threat Detection</span><span class="tag">IOC</span><span class="tag">Security Controls</span></div>
+            <span class="progress"><span class="pulse"></span>EM PROGRESSO</span>
+          </div>
+          <div class="reveal panel corner-brackets card" style="transition-delay: 210ms;">
+            <div class="kicker">03 / Incident Response</div>
+            <h3>Incident Response</h3>
+            <p>Ciclo de resposta: preparação, identificação, contenção, erradicação, recuperação e documentação.</p>
+            <div class="tags"><span class="tag">IR</span><span class="tag">Triage</span><span class="tag">Containment</span><span class="tag">Documentation</span></div>
+            <span class="progress"><span class="pulse"></span>EM PROGRESSO</span>
+          </div>
+          <div class="reveal panel corner-brackets card" style="transition-delay: 280ms;">
+            <div class="kicker">04 / Network Defense</div>
+            <h3>Network Security</h3>
+            <p>Compreensão de redes e protocolos para análise de tráfego, troubleshooting, segmentação e identificação de anomalias.</p>
+            <div class="tags"><span class="tag">TCP/IP</span><span class="tag">DNS</span><span class="tag">HTTP/HTTPS</span><span class="tag">Network Analysis</span></div>
+            <span class="progress"><span class="pulse"></span>EM PROGRESSO</span>
+          </div>
+          <div class="reveal panel corner-brackets card" style="transition-delay: 350ms;">
+            <div class="kicker">05 / Endpoint &amp; Systems</div>
+            <h3>System Defense</h3>
+            <p>Proteção de endpoints e servidores, controle de acesso, configuração segura, hardening e administração de sistemas.</p>
+            <div class="tags"><span class="tag">Linux</span><span class="tag">Windows</span><span class="tag">Hardening</span><span class="tag">Access Control</span></div>
+            <span class="progress"><span class="pulse"></span>EM PROGRESSO</span>
+          </div>
+          <div class="reveal panel corner-brackets card" style="transition-delay: 420ms;">
+            <div class="kicker">06 / Vulnerability Mgmt</div>
+            <h3>Security Assessment</h3>
+            <p>Identificação e priorização de vulnerabilidades, análise de risco, exposição e fundamentos de remediação.</p>
+            <div class="tags"><span class="tag">Vulnerability Assessment</span><span class="tag">Risk Analysis</span><span class="tag">Remediation</span></div>
+            <span class="progress"><span class="pulse"></span>EM PROGRESSO</span>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div>
-          <h3 style="font-family:var(--font-display);font-size:.85rem;color:var(--c-muted);letter-spacing:3px;margin-bottom:1.5rem;">SOFT SKILLS</h3>
-          <div class="terminal">
-            <div class="terminal-bar">
-              <span class="terminal-dot red"></span>
-              <span class="terminal-dot yel"></span>
-              <span class="terminal-dot grn"></span>
-              <span class="terminal-label">attributes.log</span>
-            </div>
-            <div class="terminal-body">
-              <div><span class="t-ok">[✓]</span> <span class="t-cmd">Problem Solving</span></div>
-              <div><span class="t-ok">[✓]</span> <span class="t-cmd">Logical Thinking</span></div>
-              <div><span class="t-ok">[✓]</span> <span class="t-cmd">Team Collaboration</span></div>
-              <div><span class="t-ok">[✓]</span> <span class="t-cmd">Clear Communication</span></div>
-              <div><span class="t-ok">[✓]</span> <span class="t-cmd">Continuous Learning</span></div>
-              <div><span class="t-ok">[✓]</span> <span class="t-cmd">Adaptability</span></div>
-            </div>
+    <!-- ========================================================
+         SECTION 4 — TECHNOLOGY (id="technology")
+         3-column grid of technical foundation cards: automation,
+         data, embedded/IoT, cloud fundamentals and workflow.
+         Note: this section uses the blood-red accent variant.
+         ======================================================== -->
+    <section id="technology">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">// TECHNOLOGY</div>
+          <h2 class="section-title">Technical <span class="text-neon glow-text">Foundation</span></h2>
+          <p>Competências complementares que sustentam a atuação em segurança: automação, dados, sistemas conectados e infraestrutura.</p>
+        </div>
+        <div class="grid-3">
+          <div class="reveal panel corner-brackets card" style="transition-delay: 70ms;">
+            <div class="kicker">Automation</div>
+            <h3>Python &amp; Scripting</h3>
+            <p>Automação de tarefas, integração de APIs, tratamento de dados e construção de ferramentas técnicas de apoio.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">Scripting</span><span class="tag">Automation</span></div>
+            <span class="progress"><span class="pulse"></span>EM PROGRESSO</span>
+          </div>
+          <div class="reveal panel corner-brackets card" style="transition-delay: 140ms;">
+            <div class="kicker">Data</div>
+            <h3>Databases &amp; SQL</h3>
+            <p>Modelagem, consultas e gestão de dados aplicados a sistemas e à análise de informação técnica.</p>
+            <div class="tags"><span class="tag">MySQL</span><span class="tag">SQL</span><span class="tag">Data Modeling</span></div>
+            <span class="progress"><span class="pulse"></span>EM PROGRESSO</span>
+          </div>
+          <div class="reveal panel corner-brackets card" style="transition-delay: 210ms;">
+            <div class="kicker">Embedded</div>
+            <h3>IoT &amp; Integrations</h3>
+            <p>Protótipos e sistemas conectados com microcontroladores, sensores, APIs e armazenamento de dados.</p>
+            <div class="tags"><span class="tag">ESP8266</span><span class="tag">Arduino</span><span class="tag">IoT</span><span class="tag">REST</span></div>
+            <span class="progress"><span class="pulse"></span>EM PROGRESSO</span>
+          </div>
+          <div class="reveal panel corner-brackets card" style="transition-delay: 280ms;">
+            <div class="kicker">Infrastructure</div>
+            <h3>Cloud Fundamentals</h3>
+            <p>Infraestrutura, serviços, ambientes computacionais e fundamentos de cloud aplicados à segurança.</p>
+            <div class="tags"><span class="tag">Cloud</span><span class="tag">Infrastructure</span><span class="tag">Linux</span><span class="tag">Windows</span></div>
+            <span class="progress"><span class="pulse"></span>EM PROGRESSO</span>
+          </div>
+          <div class="reveal panel corner-brackets card" style="transition-delay: 350ms;">
+            <div class="kicker">Tooling</div>
+            <h3>Development Workflow</h3>
+            <p>Versionamento, documentação, automação e organização de projetos técnicos.</p>
+            <div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">APIs</span><span class="tag">Documentation</span></div>
+            <span class="progress"><span class="pulse"></span>EM PROGRESSO</span>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="cv-grid">
-        <div class="cv-chip">
-          <div class="cv-chip-label">Location</div>
-          <div class="cv-chip-value">Guarulhos, SP — Brazil</div>
+    <!-- ========================================================
+         SECTION 5 — LABS & PROJECTS (id="projects")
+         2-column grid of practical projects (IoT monitoring,
+         industrial system, security/network labs). Two projects
+         are marked "EM PROGRESSO" (in progress).
+         ======================================================== -->
+    <section id="projects">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">// LABS &amp; PROJECTS</div>
+          <h2 class="section-title">Technical <span class="text-neon glow-text">Evidence</span></h2>
+          <p>Projetos que conectam Cybersecurity, software, dados, redes, IoT e automação. A prioridade é demonstrar capacidade prática.</p>
         </div>
-        <div class="cv-chip">
-          <div class="cv-chip-label">Email</div>
-          <div class="cv-chip-value" style="font-size:.82rem;">contate.guilherme.santos@gmail.com</div>
-        </div>
-        <div class="cv-chip">
-          <div class="cv-chip-label">LinkedIn</div>
-          <div class="cv-chip-value"><a href="https://linkedin.com/in/gui-santos05092008" target="_blank" style="color:var(--c-primary);">gui-santos05092008</a></div>
-        </div>
-        <div class="cv-chip">
-          <div class="cv-chip-label">GitHub</div>
-          <div class="cv-chip-value"><a href="https://github.com/GuilhermeSANT29" target="_blank" style="color:var(--c-primary);">GuilhermeSANT29</a></div>
-        </div>
-      </div>
-
-      <div class="mt-2">
-        <h3 style="font-family:var(--font-display);font-size:.85rem;color:var(--c-muted);letter-spacing:3px;margin-bottom:1rem;">LANGUAGES</h3>
-        <div class="badge-row">
-          <span class="badge">🇧🇷 Portuguese — Native</span>
-          <span class="badge">🇺🇸 English — Intermediate</span>
-          <span class="badge">🇪🇸 Spanish — Basic</span>
-        </div>
-      </div>
-
-      <div class="mt-2">
-        <h3 style="font-family:var(--font-display);font-size:.85rem;color:var(--c-muted);letter-spacing:3px;margin-bottom:1rem;">TOOLS &amp; PRODUCTIVITY</h3>
-        <div class="badge-row">
-          <span class="badge">Microsoft Excel</span>
-          <span class="badge">Word Advanced</span>
-          <span class="badge">PowerPoint</span>
-          <span class="badge">Canva Design</span>
-          <span class="badge">Git / GitHub</span>
-          <span class="badge">VS Code</span>
-          <span class="badge">Node.js</span>
-          <span class="badge">React</span>
+        <div class="grid-2">
+          <div class="reveal panel corner-brackets card" style="transition-delay: 80ms;">
+            <div class="kicker">NETWORK / IOT / API</div>
+            <h3>Projeto Integrador — IoT Monitoring</h3>
+            <p>Sistema de monitoramento com ESP8266 integrado a API REST, banco de dados e Google Sheets para armazenamento e visualização de dados.</p>
+            <div class="tags"><span class="tag">ESP8266</span><span class="tag">REST API</span><span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">Google APIs</span></div>
+            <a href="https://github.com/GuilhermeSANT29/Projeto-Integrador---IoT" target="_blank" rel="noopener" class="link">VER REPOSITÓRIO →</a>
+          </div>
+          <div class="reveal panel corner-brackets card" style="transition-delay: 160ms;">
+            <div class="kicker">SYSTEMS / DATABASE / AUTOMATION</div>
+            <h3>Industrial Monitoring System</h3>
+            <p>Registro e gerenciamento de colaboradores, operadores, máquinas, sensores e manutenção, com banco de dados e automação de processos.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">Automation</span><span class="tag">Data Management</span></div>
+            <a href="https://github.com/GuilhermeSANT29/DataBase/tree/main/projeto%20do%20falabella" target="_blank" rel="noopener" class="link">VER REPOSITÓRIO →</a>
+          </div>
+          <div class="reveal panel corner-brackets card" style="transition-delay: 240ms;">
+            <div class="kicker">NEXT SECURITY LAB</div>
+            <h3>Security Monitoring Lab</h3>
+            <p>Laboratório para documentar monitoramento de eventos, análise de logs, investigação básica e indicadores de segurança em ambiente controlado.</p>
+            <div class="tags"><span class="tag">SOC</span><span class="tag">Logs</span><span class="tag">Detection</span><span class="tag">Blue Team</span></div>
+            <span class="progress"><span class="pulse"></span>EM PROGRESSO</span>
+          </div>
+          <div class="reveal panel corner-brackets card" style="transition-delay: 320ms;">
+            <div class="kicker">NEXT SECURITY LAB</div>
+            <h3>Network Security Lab</h3>
+            <p>Laboratório para análise de tráfego, protocolos, configuração de rede e identificação de comportamentos anômalos em ambiente autorizado.</p>
+            <div class="tags"><span class="tag">TCP/IP</span><span class="tag">DNS</span><span class="tag">Traffic Analysis</span><span class="tag">Network Security</span></div>
+            <span class="progress"><span class="pulse"></span>EM PROGRESSO</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ── ANALYTICS ── -->
-    <section id="analytics">
-      <div class="section-label">// ACTIVITY METRICS</div>
-      <h2 class="section-title">GitHub <span>Analytics</span></h2>
-
-      <div class="analytics-wrap">
-        <div class="analytics-header">
-          <span style="color:var(--c-accent);">●</span>
-          <span class="analytics-title">CONTRIBUTION GRAPH — GuilhermeSANT29</span>
+    <!-- ========================================================
+         SECTION 6 — EXPERIENCE (id="experience")
+         Career timeline. Currently one entry summarizing the
+         ongoing technical development phase.
+         ======================================================== -->
+    <section id="experience">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">// EXPERIENCE</div>
+          <h2 class="section-title">Professional <span class="text-neon glow-text">Background</span></h2>
+          <p>Enquanto a experiência operacional específica é construída, projetos e laboratórios documentados funcionam como evidência técnica complementar.</p>
         </div>
-        <img
-          class="analytics-img"
-          src="https://github-readme-activity-graph.vercel.app/graph?username=GuilhermeSANT29&theme=tokyo-night&bg_color=0d1117&color=00ffe7&line=0af&point=39ff14&area=true&hide_border=true"
-          alt="GitHub Activity Graph — Guilherme Santos"
-          loading="lazy"
-        />
-      </div>
-
-      <div class="stats-row">
-        <div class="stat-card">
-          <div class="stat-number">10+</div>
-          <div class="stat-label">Repositories</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">99+</div>
-          <div class="stat-label">LinkedIn Connections</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">12+</div>
-          <div class="stat-label">Technologies</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">2026</div>
-          <div class="stat-label">Graduation Year</div>
+        <div class="reveal timeline" style="transition-delay: 120ms;">
+          <article>
+            <span class="bullet"></span>
+            <div class="meta">ATUAL / TECHNICAL DEVELOPMENT</div>
+            <h3>Cybersecurity &amp; Systems Development</h3>
+            <div class="role">Formação técnica, projetos e laboratórios</div>
+            <p>Desenvolvimento prático envolvendo redes, sistemas, programação, automação, dados e fundamentos de segurança.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ── BLOG ── -->
-    <section id="blog">
-      <div class="section-label"></div>
-      <h2 class="section-title">Tech <span>Blog</span></h2>
-
-      <div class="blog-coming">
-        <div class="blog-coming-icon">&gt;_</div>
-        <h3>Articles Loading...</h3>
-        <p>
-          In-depth writeups on cybersecurity, ethical hacking techniques,
-          automation and software engineering are currently being prepared.
-          Check back soon or follow on LinkedIn for updates.
-        </p>
-        <br>
-        <a class="btn btn-ghost" href="https://linkedin.com/in/gui-santos05092008" target="_blank" rel="noopener" style="margin:0 auto;">
-          Follow on LinkedIn
-        </a>
+    <!-- ========================================================
+         SECTION 7 — EDUCATION (id="education")
+         Academic background card (SENAI — Cybersystems
+         Technician) plus language proficiency tags.
+         ======================================================== -->
+    <section id="education">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">// EDUCATION</div>
+          <h2 class="section-title">Academic <span class="text-neon glow-text">Foundation</span></h2>
+        </div>
+        <div class="reveal panel corner-brackets education-card" style="transition-delay: 100ms;">
+          <div class="meta">FEV 2025 — DEZ 2026</div>
+          <h3>Técnico em Cibersistemas</h3>
+          <div class="school">SENAI — Guarulhos, Brasil</div>
+          <p>Formação técnica com base em cibersistemas, redes, desenvolvimento de software, automação, cloud computing, bancos de dados e fundamentos de segurança.</p>
+        </div>
+        <div class="reveal lang-tags" style="transition-delay: 160ms;">
+          <span class="tag">Português — Nativo</span>
+          <span class="tag">Inglês — Intermediário</span>
+          <span class="tag">Espanhol — Básico</span>
+        </div>
       </div>
     </section>
 
-    <!-- ── CONTACT ── -->
-    <section id="contact">
-      <div class="section-label">// OPEN CHANNEL</div>
-      <h2 class="section-title">Get In <span>Touch</span></h2>
-
-      <div class="contact-layout">
-        <div class="contact-info">
-          <p style="color:var(--c-muted); line-height:1.8; margin-bottom:1rem; font-size:.95rem;">
-            Open to international opportunities, technical collaborations,
-            internships, and freelance projects. Response time is typically
-            within 24 hours.
-          </p>
-
-          <a class="contact-item" href="mailto:contate.guilherme.santos@gmail.com">
-            <span class="contact-item-icon">✉</span>
-            <div class="contact-item-body">
-              <div class="contact-item-label">Email</div>
-              <div class="contact-item-value">contate.guilherme.santos@gmail.com</div>
-            </div>
-          </a>
-
-          <a class="contact-item" href="https://linkedin.com/in/gui-santos05092008" target="_blank" rel="noopener">
-            <span class="contact-item-icon">in</span>
-            <div class="contact-item-body">
-              <div class="contact-item-label">LinkedIn</div>
-              <div class="contact-item-value">gui-santos05092008</div>
-            </div>
-          </a>
-
-          <a class="contact-item" href="https://github.com/GuilhermeSANT29" target="_blank" rel="noopener">
-            <span class="contact-item-icon">⌥</span>
-            <div class="contact-item-body">
-              <div class="contact-item-label">GitHub</div>
-              <div class="contact-item-value">GuilhermeSANT29</div>
-            </div>
-          </a>
-
-          <a class="contact-item" href="https://instagram.com/Sant_gewinner" target="_blank" rel="noopener">
-            <span class="contact-item-icon">◈</span>
-            <div class="contact-item-body">
-              <div class="contact-item-label">Instagram</div>
-              <div class="contact-item-value">@Sant_winner</div>
-            </div>
-          </a>
-
-          <a class="contact-item" href="https://x.com/00eoSant" target="_blank" rel="noopener">
-            <span class="contact-item-icon">𝕏</span>
-            <div class="contact-item-body">
-              <div class="contact-item-label">Twitter / X</div>
-              <div class="contact-item-value">@00eoSant</div>
-            </div>
-          </a>
+    <!-- ========================================================
+         SECTION 8 — CONTACT (id="contact")
+         "Open channel" section with email, LinkedIn, GitHub and
+         location cards. Links are external and open in a new tab.
+         ======================================================== -->
+    <section class="contact" id="contact">
+      <div class="cyber-grid" style="opacity: 0.4;"></div>
+      <div class="orb"></div>
+      <div class="container" style="position:relative;z-index:1;">
+        <div class="reveal">
+          <div class="eyebrow">// OPEN CHANNEL</div>
+          <h2 class="section-title">Let's <span class="text-neon glow-text">Connect</span></h2>
+          <p>Aberto a oportunidades de estágio e posições júnior em Cybersecurity, SOC, Blue Team e áreas relacionadas.</p>
         </div>
-
+        <div class="grid-2">
+          <a href="mailto:contate.guilherme.santos@gmail.com" class="reveal panel contact-card" style="transition-delay: 70ms;">
+            <div class="label">EMAIL</div>
+            <div class="value">contate.guilherme.santos@gmail.com</div>
+          </a>
+          <a href="https://linkedin.com/in/gui-santos05092008" target="_blank" rel="noopener" class="reveal panel contact-card" style="transition-delay: 140ms;">
+            <div class="label">LINKEDIN</div>
+            <div class="value">gui-santos05092008</div>
+          </a>
+          <a href="https://github.com/GuilhermeSANT29" target="_blank" rel="noopener" class="reveal panel contact-card" style="transition-delay: 210ms;">
+            <div class="label">GITHUB</div>
+            <div class="value">GuilhermeSANT29</div>
+          </a>
+          <div class="reveal panel contact-card" style="transition-delay: 280ms;">
+            <div class="label">LOCALIZAÇÃO</div>
+            <div class="value">Guarulhos, SP — Brasil</div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- ==========================================================
+       FOOTER
+       Simple bottom bar with brand mark and copyright.
+       ========================================================== -->
   <footer>
-    <div class="footer-logo">SANT29 · CYBER &amp; DEV</div>
-    <div class="footer-links">
-      <a class="footer-link" href="https://github.com/GuilhermeSANT29" target="_blank">GitHub</a>
-      <a class="footer-link" href="https://linkedin.com/in/gui-santos05092008" target="_blank">LinkedIn</a>
-      <a class="footer-link" href="https://instagram.com/Sant_gewinner" target="_blank">Instagram</a>
-      <a class="footer-link" href="https://x.com/00eoSant" target="_blank">Twitter</a>
-      <a class="footer-link" href="mailto:contate.guilherme.santos@gmail.com">Email</a>
+    <div class="container footer-inner">
+      <span class="text-primary">SANT29 // CYBERSECURITY</span>
+      <span>© 2026 Guilherme Santos</span>
     </div>
-    <div class="footer-copy">© 2026 Guilherme Santos — Guarulhos, SP · Brazil — All rights reserved.</div>
   </footer>
 
-</div><!-- end .page-wrap -->
-
-<!-- ===== SCRIPTS ===== -->
-<script>
-/* ============================================================
-   PARTICLE CANVAS BACKGROUND
-============================================================ */
-(function() {
-  const canvas = document.getElementById('bg-canvas');
-  const ctx    = canvas.getContext('2d');
-  let W, H, particles = [], animId;
-
-  function resize() {
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-
-  function Particle() {
-    this.reset();
-  }
-  Particle.prototype.reset = function() {
-    this.x  = Math.random() * W;
-    this.y  = Math.random() * H;
-    this.vx = (Math.random() - .5) * .3;
-    this.vy = (Math.random() - .5) * .3;
-    this.r  = Math.random() * 1.2 + .3;
-    this.alpha = Math.random() * .5 + .1;
-    this.color = Math.random() > .7 ? '#00ffe7' : Math.random() > .5 ? '#0af' : '#39ff14';
-  };
-  Particle.prototype.update = function() {
-    this.x += this.vx;
-    this.y += this.vy;
-    if (this.x < 0) this.x = W;
-    if (this.x > W) this.x = 0;
-    if (this.y < 0) this.y = H;
-    if (this.y > H) this.y = 0;
-  };
-  Particle.prototype.draw = function() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.globalAlpha = this.alpha;
-    ctx.fill();
-    ctx.globalAlpha = 1;
-  };
-
-  function connectParticles() {
-    const maxDist = 100;
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < maxDist) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = 'rgba(0,255,231,' + (1 - dist / maxDist) * .08 + ')';
-          ctx.lineWidth = .5;
-          ctx.stroke();
-        }
+<!-- ==========================================================
+       ===== JAVASCRIPT =====
+       SCRIPT — UI EFFECTS
+       All interface effects are bootstrapped by initCyberEffects():
+       1. Matrix rain      — canvas animation behind the hero
+       2. Typed terminal   — profile lines typed in #terminal-body
+       3. Scroll reveal    — adds .visible to .reveal in viewport
+       4. Active nav       — highlights the section currently in view
+       5. Mobile menu      — hamburger toggle for the mobile nav
+       6. Infinite ticker  — duplicates the ticker track content
+       Every effect registers a cleanup function so the whole
+       system can be torn down cleanly if needed.
+       ========================================================== -->
+  <script>
+    // js/main.js
+    // Efeitos de interface: matrix rain, terminal digitado, scroll reveal,
+    // navegação ativa por seção, menu mobile e ticker infinito.
+    function initCyberEffects() {
+      const cleanups = [];
+      // --- 1. MATRIX RAIN ---------------------------------------------
+      // Draws a falling-character rain on the hero <canvas>.
+      const canvas = document.getElementById("matrix");
+      if (canvas) {
+        const ctx = canvas.getContext("2d");
+        const chars = "01アイウエオカキクケコサシスセソタチツテトナニヌネノ<>/{}[]#$&*+=";
+        const fontSize = 14;
+        let drops = [];
+        let raf = 0;
+        // Recalculate column count when the canvas is resized.
+        const resize = () => {
+          canvas.width = canvas.offsetWidth;
+          canvas.height = canvas.offsetHeight;
+          const columns = Math.ceil(canvas.width / fontSize);
+          drops = Array.from({ length: columns }, () => Math.floor(Math.random() * canvas.height / fontSize));
+        };
+        resize();
+        window.addEventListener("resize", resize);
+        // Animation loop: fade previous frame, draw random chars.
+        let last = 0;
+        const draw = (time) => {
+          raf = requestAnimationFrame(draw);
+          if (time - last < 60 || !ctx)
+            return;
+          last = time;
+          ctx.fillStyle = "rgba(3, 10, 7, 0.16)";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.font = `${fontSize}px "JetBrains Mono", monospace`;
+          for (let i = 0;i < drops.length; i++) {
+            const char = chars[Math.floor(Math.random() * chars.length)] ?? "0";
+            const x = i * fontSize;
+            const y = (drops[i] ?? 0) * fontSize;
+            const r = Math.random();
+            ctx.fillStyle = r > 0.985 ? "#ff6b6b" : r > 0.96 ? "#e6fff0" : "#2ddd77";
+            ctx.fillText(char, x, y);
+            if (y > canvas.height && Math.random() > 0.975)
+              drops[i] = 0;
+            drops[i] = (drops[i] ?? 0) + 1;
+          }
+        };
+        raf = requestAnimationFrame(draw);
+        cleanups.push(() => {
+          cancelAnimationFrame(raf);
+          window.removeEventListener("resize", resize);
+        });
       }
+
+      // --- 2. TYPED TERMINAL -------------------------------------------
+      // Sequentially appends pre-defined "command" lines to the
+      // terminal body, then leaves a blinking caret on the last line.
+      const body = document.getElementById("terminal-body");
+      if (body) {
+        const lines = [
+          { type: "prompt", text: "Mind-Set" },
+          { type: "kv", key: "area", val: "Cybersecurity / Cybersystems" },
+          { type: "kv", key: "core", val: "Networking + Systems + Security + Automation" },
+          { type: "kv", key: "education", val: "Junior Cybersecurity Analyst — Cisco" },
+          { type: "kv", key: "education", val: "Technician in Cybersystems — SENAI" },
+          { type: "OK", text: "OPEN TO OPPORTUNITIES // GUARULHOS, SP — BRAZIL" }
+        ];
+        let index = 0;
+        let timer;
+        body.innerHTML = "";
+        const addLine = () => {
+          if (index >= lines.length) {
+            body.innerHTML += '<div class="line caret"></div>';
+            return;
+          }
+          const l = lines[index];
+          const div = document.createElement("div");
+          div.className = "line";
+          if (l.type === "prompt") {
+            div.innerHTML = `<span class="prompt">$</span> <span>${l.text}</span>`;
+          } else if (l.type === "kv") {
+            div.innerHTML = `<span class="key">"${l.key}"</span><span class="text-muted">: </span><span class="val">"${l.val}"</span>`;
+          } else {
+            div.innerHTML = `<span class="ok">[ OK ]</span> <span>${l.text}</span>`;
+          }
+          body.appendChild(div);
+          index++;
+          timer = setTimeout(addLine, 420);
+        };
+        timer = setTimeout(addLine, 600);
+        cleanups.push(() => clearTimeout(timer));
+      }
+
+      // --- 3. SCROLL REVEAL --------------------------------------------
+      // Observes every .reveal element and fades it in when it
+      // enters the viewport (threshold 12%).
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting)
+            entry.target.classList.add("visible");
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+      cleanups.push(() => revealObserver.disconnect());
+
+      // --- 4. ACTIVE NAV LINK ------------------------------------------
+      // Highlights the nav link matching the section currently
+      // crossing the middle band of the viewport.
+      const ids = [
+        "home",
+        "about",
+        "security",
+        "technology",
+        "projects",
+        "experience",
+        "education",
+        "contact"
+      ];
+      const links = document.querySelectorAll(".desktop-nav a, .mobile-nav a");
+      const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            links.forEach((link) => {
+              link.classList.toggle("active", link.getAttribute("href") === `#${e.target.id}`);
+            });
+          }
+        });
+      }, { rootMargin: "-45% 0px -50% 0px" });
+      ids.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el)
+          navObserver.observe(el);
+      });
+      cleanups.push(() => navObserver.disconnect());
+
+      // --- 5. MOBILE MENU ----------------------------------------------
+      // Hamburger button toggles the mobile nav; clicking any
+      // link inside closes it. Icon swaps ☰ / ✕.
+      const btn = document.getElementById("menu-btn");
+      const nav = document.getElementById("mobile-nav");
+      if (btn && nav) {
+        const toggle = () => {
+          nav.classList.toggle("open");
+          btn.textContent = nav.classList.contains("open") ? "✕" : "☰";
+        };
+        const close = () => {
+          nav.classList.remove("open");
+          btn.textContent = "☰";
+        };
+        btn.addEventListener("click", toggle);
+        nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
+        cleanups.push(() => {
+          btn.removeEventListener("click", toggle);
+          nav.querySelectorAll("a").forEach((a) => a.removeEventListener("click", close));
+        });
+      }
+
+      // --- 6. INFINITE TICKER ------------------------------------------
+      // Duplicates the ticker content once so the CSS marquee
+      // animation loops seamlessly without a visible jump.
+      const track = document.getElementById("ticker-track");
+      if (track && !track.dataset["duplicated"]) {
+        track.innerHTML += track.innerHTML;
+        track.dataset["duplicated"] = "true";
+      }
+      // Returns a single teardown function for all effects.
+      return () => cleanups.forEach((fn) => fn());
     }
-  }
 
-  function loop() {
-    ctx.clearRect(0, 0, W, H);
-    particles.forEach(p => { p.update(); p.draw(); });
-    connectParticles();
-    animId = requestAnimationFrame(loop);
-  }
-
-  resize();
-  for (let i = 0; i < 90; i++) particles.push(new Particle());
-  loop();
-  window.addEventListener('resize', resize);
-})();
-
-/* ============================================================
-   TYPED TEXT EFFECT
-============================================================ */
-(function() {
-  const roles = [
-    'Cybersystems Technician',
-    'Junior Software Developer',
-    'Ethical Hacking Enthusiast',
-    'Cloud & Infrastructure Explorer',
-    'Automation Engineer'
-  ];
-  const el = document.getElementById('typed-target');
-  let roleIdx = 0, charIdx = 0, deleting = false;
-
-  function type() {
-    const role = roles[roleIdx];
-    if (!deleting) {
-      el.textContent = role.slice(0, ++charIdx);
-      if (charIdx === role.length) {
-        deleting = true;
-        setTimeout(type, 2200);
-        return;
-      }
-    } else {
-      el.textContent = role.slice(0, --charIdx);
-      if (charIdx === 0) {
-        deleting = false;
-        roleIdx  = (roleIdx + 1) % roles.length;
-      }
-    }
-    setTimeout(type, deleting ? 40 : 75);
-  }
-  type();
-})();
-
-/* ============================================================
-   SCROLL-TRIGGERED SECTION REVEAL
-============================================================ */
-(function() {
-  const sections = document.querySelectorAll('section');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: .08 });
-  sections.forEach(s => obs.observe(s));
-})();
-
-/* ============================================================
-   SKILL BAR ANIMATION
-============================================================ */
-(function() {
-  const fills = document.querySelectorAll('.skill-bar-fill');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.width = e.target.dataset.pct + '%';
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: .5 });
-  fills.forEach(f => obs.observe(f));
-})();
-
-/* ============================================================
-   ACTIVE NAV ON SCROLL
-============================================================ */
-(function() {
-  const links    = document.querySelectorAll('.nav-link');
-  const sections = document.querySelectorAll('section');
-
-  function setActive() {
-    let cur = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 120) cur = s.id;
-    });
-    links.forEach(l => {
-      l.classList.toggle('active', l.getAttribute('href') === '#' + cur);
-    });
-  }
-  window.addEventListener('scroll', setActive, { passive: true });
-})();
-
-/* ============================================================
-   MOBILE NAV TOGGLE
-============================================================ */
-(function() {
-  const btn = document.getElementById('nav-toggle');
-  const nav = document.getElementById('main-nav');
-  btn.addEventListener('click', () => nav.classList.toggle('open'));
-  nav.querySelectorAll('.nav-link').forEach(l => {
-    l.addEventListener('click', () => nav.classList.remove('open'));
-  });
-})();
-
-/* ============================================================
-   CONTACT FORM
-============================================================ */
-(function() {
-  const form = document.getElementById('contact-form');
-  const fb   = document.getElementById('form-feedback');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    fb.style.display = 'block';
-    form.reset();
-    setTimeout(() => { fb.style.display = 'none'; }, 5000);
-  });
-})();
-</script>
-
+    // Boot all effects on page load.
+    initCyberEffects();
+  </script>
 </body>
 </html>
+
