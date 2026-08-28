@@ -61,7 +61,7 @@ Busco oportunidades internacionais em empresas de tecnologia (Big Techs).
 
 📦 3+ repositórios
 
-🤝 80+ conexões no LinkedIn
+🤝 100+ conexões no LinkedIn
 
 🧠 15+ tecnologias dominadas
 
