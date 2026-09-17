@@ -68,9 +68,11 @@
       --cyan: oklch(0.86 0.11 218);
       --sky: oklch(0.85 0.12 222);
       --blue: oklch(0.62 0.17 252);
+      --purple: oklch(0.68 0.2 300);
+      --ice: oklch(0.88 0.03 210);
       --magenta: oklch(0.72 0.25 330);
 --amber: oklch(0.86 0.17 92);
-      --green: oklch(0.78 0.16 155);
+      --green: oklch(0.64 0.16 155);
       --blood: oklch(0.45 0.19 25);
       --blood-deep: oklch(0.32 0.15 24);
       --blood-bright: oklch(0.58 0.21 27);
@@ -78,6 +80,7 @@
       --glitch-red: #ff2d6b;
       --glitch-blue: #0af;
       --gradient-neon: linear-gradient(100deg, oklch(0.7 0.13 232), var(--sky) 50%, oklch(0.92 0.08 210));
+      --gradient-green: linear-gradient(100deg, oklch(0.9 0.12 150), oklch(0.74 0.18 150) 50%, var(--green));
       --gradient-blood: linear-gradient(100deg, var(--blood-deep), var(--blood) 50%, var(--blood-bright));
       --gradient-panel: linear-gradient(150deg, color-mix(in oklab, var(--surface-2) 90%, transparent), color-mix(in oklab, var(--background) 85%, transparent));
       --glow-primary: 0 0 0 1px color-mix(in oklab, var(--primary) 35%, transparent), 0 14px 50px -18px color-mix(in oklab, var(--primary) 55%, transparent);
@@ -117,6 +120,13 @@
     .text-primary-foreground { color: var(--primary-foreground); }
     .text-muted { color: var(--muted-foreground); }
     .text-cyan { color: var(--cyan); }
+    .text-blue { color: var(--cyan); }
+    .text-green {
+      background: var(--gradient-green);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
     .text-magenta { color: var(--magenta); }
     .text-amber { color: var(--amber); }
 
@@ -329,6 +339,36 @@
       opacity: 1;
       animation: sweep 0.7s ease forwards;
     }
+    .btn-labs {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid color-mix(in oklab, var(--green) 75%, transparent);
+      background: color-mix(in oklab, var(--green) 12%, transparent);
+      color: var(--green);
+      box-shadow: 0 0 18px color-mix(in oklab, var(--green) 18%, transparent);
+    }
+    .btn-labs::after {
+      content: "010 110 001 101 010 011 110 100 001 111\A101 001 110 010 111 000 101 011 100 010\A001 111 010 100 110 001 011 101 000 111";
+      position: absolute;
+      top: 50%;
+      bottom: auto;
+      left: 0;
+      display: block;
+      width: max-content;
+      padding-left: 100%;
+      color: var(--green);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.16em;
+      line-height: 1.45;
+      white-space: pre;
+      opacity: 0.24;
+      pointer-events: none;
+      transform: translateY(-50%);
+      animation: binary-flow 5s linear infinite;
+    }
+    .btn-labs > span { position: relative; z-index: 1; }
+    .btn-labs:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
     .btn-outline {
       border: 1px solid var(--border);
       color: var(--foreground);
@@ -339,6 +379,7 @@
   .btn-outline.amber:hover { border-color: var(--amber); color: var(--amber); }
     .btn-outline.orange:hover { border-color: var(--blood-bright); color: var(--blood-bright); }
     .btn-outline.green:hover { border-color: var(--green); color: var(--green); }
+    .btn-outline.ice:hover { border-color: var(--ice); color: var(--ice); }
 
     /* ----------------------------------------------------------
        HEADER / NAVIGATION
@@ -527,18 +568,30 @@
       line-height: 1.7;
       color: var(--muted-foreground);
     }
-    .hero-actions { margin-top: 2.25rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .hero-actions {
+      margin-top: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .hero-action-group { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .hero-action-group.documents { margin-left: 2rem; }
+    .hero-action-group.supporting { margin-left: 4rem; }
+    @media (max-width: 639px) {
+      .hero-action-group.documents,
+      .hero-action-group.supporting { margin-left: 0; }
+    }
     .hero-stats {
       margin-top: 3rem;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
-      max-width: 48rem;
+      max-width: 32rem;
     }
-    @media (min-width: 640px) { .hero-stats { grid-template-columns: repeat(4, 1fr); } }
     .hero-stats .stat { padding: 1rem; }
     .hero-stats dt { color: var(--muted-foreground); font-size: 0.68rem; letter-spacing: 0.1em; }
-    .hero-stats dd { margin: 0.4rem 0 0; color: var(--primary); font-family: "JetBrains Mono", monospace; font-size: 0.78rem; }
+    .hero-stats dd { margin: 0.4rem 0 0; color: var(--primary); font-family: "JetBrains Mono", monospace; font-size: 0.68rem; letter-spacing: 0.02em; white-space: nowrap; }
 
     /* ----------------------------------------------------------
        TICKER
@@ -579,6 +632,66 @@
       line-height: 1.7;
       color: var(--muted-foreground);
     }
+    .profile-copy {
+      margin-top: 1.25rem;
+      max-width: 48rem;
+    }
+    .profile-copy p {
+      margin: 0;
+      color: var(--muted-foreground);
+      line-height: 1.8;
+    }
+    .profile-copy p + p { margin-top: 1rem; }
+    .projects-copy {
+      margin-top: 1.25rem;
+      max-width: 48rem;
+    }
+    .projects-copy p {
+      margin: 0;
+      color: var(--muted-foreground);
+      line-height: 1.8;
+    }
+    .projects-copy p + p { margin-top: 1rem; }
+    .cybersecurity-copy {
+      margin-top: 1.25rem;
+      max-width: 48rem;
+    }
+    .cybersecurity-copy p {
+      margin: 0;
+      color: var(--muted-foreground);
+      line-height: 1.8;
+    }
+    .cybersecurity-copy p + p { margin-top: 1rem; }
+    .cybersecurity-copy {
+      max-width: 100%;
+    }
+    .security-lead {
+      max-width: 48rem;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--foreground);
+    }
+    .security-lead strong { color: var(--cyan); font-weight: 600; }
+    .cybersecurity-panels {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1.25rem;
+    }
+    @media (min-width: 768px) { .cybersecurity-panels { grid-template-columns: repeat(2, 1fr); } }
+    .security-card {
+      padding: 1.5rem;
+      height: 100%;
+    }
+    .security-card .kicker { color: var(--cyan); }
+    .security-card.attack .kicker { color: var(--magenta); }
+    .security-card.red-team .kicker { color: var(--blood-bright); }
+    .security-card.roadmap .kicker { color: var(--amber); }
+    .security-card p { max-width: 38rem; }
+    .security-card .tags { margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .security-card .tag.defense { border-color: color-mix(in oklab, var(--green) 55%, transparent); color: var(--green); }
+    .security-card .tag.attack { border-color: color-mix(in oklab, var(--magenta) 55%, transparent); color: var(--magenta); }
+    .security-card .tag.red-team { border-color: color-mix(in oklab, var(--blood-bright) 60%, transparent); color: var(--blood-bright); }
+    .security-card .tag.school { border-color: color-mix(in oklab, var(--amber) 55%, transparent); color: var(--amber); }
 
     .grid-3 {
       margin-top: 2.5rem;
@@ -740,7 +853,8 @@
       border-top: 1px solid color-mix(in oklab, var(--primary) 15%, transparent);
       padding-top: 2rem;
     }
-    .languages .languages-title {
+    .languages .languages-title,
+    .developer-languages .languages-title {
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -752,14 +866,16 @@
       color: var(--primary);
       text-transform: uppercase;
     }
-    .languages .languages-title::before {
+    .languages .languages-title::before,
+    .developer-languages .languages-title::before {
       content: "";
       display: block;
       width: 2rem;
       height: 1px;
       background: color-mix(in oklab, var(--primary) 70%, transparent);
     }
-    .languages .languages-sub {
+    .languages .languages-sub,
+    .developer-languages .languages-sub {
       margin: 0.5rem 0 0;
       max-width: 42rem;
       font-size: 0.9rem;
@@ -810,6 +926,47 @@
       color: var(--muted-foreground);
       text-transform: uppercase;
     }
+    .language-card.portuguese .lang-name,
+    .language-card.portuguese .cefr { color: var(--green); }
+    .language-card.portuguese .cefr { border-color: color-mix(in oklab, var(--green) 55%, transparent); background: color-mix(in oklab, var(--green) 12%, transparent); }
+    .language-card.english .lang-name,
+    .language-card.english .cefr { color: var(--purple); }
+    .language-card.english .cefr { border-color: color-mix(in oklab, var(--purple) 55%, transparent); background: color-mix(in oklab, var(--purple) 12%, transparent); }
+    .language-card.spanish .lang-name,
+    .language-card.spanish .cefr { color: var(--amber); }
+    .language-card.spanish .cefr { border-color: color-mix(in oklab, var(--amber) 55%, transparent); background: color-mix(in oklab, var(--amber) 12%, transparent); }
+    .developer-languages {
+      margin-top: 2.5rem;
+      border-top: 1px solid color-mix(in oklab, var(--primary) 15%, transparent);
+      padding-top: 2rem;
+    }
+    .developer-languages .languages-title { margin-bottom: 0.25rem; }
+    .developer-grid {
+      margin-top: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+    @media (min-width: 640px) { .developer-grid { grid-template-columns: repeat(2, 1fr); } }
+    .developer-card {
+      padding: 1.25rem;
+      height: 100%;
+    }
+    .developer-card .developer-area {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      color: var(--cyan);
+      text-transform: uppercase;
+    }
+    .developer-card.backend .developer-area { color: var(--green); }
+    .developer-card.automation .developer-area { color: var(--amber); }
+    .developer-card .developer-description { margin: 0.65rem 0 0; color: var(--muted-foreground); }
+    .developer-card .developer-tags { margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .developer-card .tag { color: var(--foreground); }
+    .developer-card.frontend .tag { border-color: color-mix(in oklab, var(--cyan) 55%, transparent); color: var(--cyan); }
+    .developer-card.backend .tag { border-color: color-mix(in oklab, var(--green) 55%, transparent); color: var(--green); }
+    .developer-card.automation .tag { border-color: color-mix(in oklab, var(--amber) 55%, transparent); color: var(--amber); }
 
     /* ----------------------------------------------------------
        CONTACT
@@ -840,6 +997,29 @@
       font-size: 0.85rem;
       word-break: break-all;
     }
+    .contact-copy {
+      max-width: 48rem;
+    }
+    .contact-copy .contact-lead {
+      margin-top: 1.25rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--foreground);
+    }
+    .contact-copy p:not(.contact-lead) {
+      margin: 1rem 0 0;
+      line-height: 1.8;
+      color: var(--muted-foreground);
+    }
+    .contact-copy strong { color: var(--cyan); font-weight: 600; }
+    .contact-question { color: var(--amber) !important; font-family: "JetBrains Mono", monospace; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .contact-card .action {
+      margin-top: 0.75rem;
+      color: var(--muted-foreground);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    .contact-card .arrow { display: inline-block; margin-top: 1.25rem; color: var(--primary); font-family: "JetBrains Mono", monospace; font-weight: 700; }
 
     /* ----------------------------------------------------------
        FOOTER
@@ -889,6 +1069,7 @@
       100% { box-shadow: 0 0 0 0 transparent; }
     }
     @keyframes sweep { 0% { transform: translateX(-120%); } 100% { transform: translateX(220%); } }
+    @keyframes binary-flow { from { transform: translate(0, -50%); } to { transform: translate(-100%, -50%); } }
 
     /* ----------------------------------------------------------
        NAME GLITCH EFFECT ("SANTOS")
@@ -969,10 +1150,7 @@
 
   <main>
     <!-- ========================================================
-         SECTION 1 — HERO (id="home")
-         Full-height intro: matrix rain canvas, animated grid,
-         glow orbs, scan beam, status badge, glitch name,
-         subtitle, lead paragraph, CTA buttons and quick stats.
+         SECTION 1 HOME - ID = HERO
          ======================================================== -->
     <section class="hero" id="home">
       <canvas id="matrix" aria-hidden="true"></canvas>
@@ -982,7 +1160,7 @@
       <div class="scan-beam"></div>
       <div class="container hero-content">
         <div class="reveal">
-          <div class="status-badge"><span class="dot"></span>Cybersecurity Analyst & Cyber-Systems Technician</div>
+          <div class="status-badge"><span class="dot"></span>Cyber-Systems Technician & Cybersecurity (Student) </div>
         </div>
         <div class="reveal" style="transition-delay: 90ms;">
           <h1 class="glitch">GUILHERME<br><span class="text-neon glow-text name-glitch" data-text="SANTOS">SANTOS</span></h1>
@@ -991,36 +1169,35 @@
           <p class="subtitle">Cybersecurity · Automated Systems · Network Security · Database & Cloud </p>
         </div>
         <div class="reveal" style="transition-delay: 220ms;">
-          <p class="lead">Cyber-Systems Technician focused on Cybersecurity, Network Security, Infrastructure, and Security Automation. Develops Python-based solutions for automation, environment analysis, industrial systems integration (including PLCs), and technical troubleshooting, applying security by design principles and supporting the reliability of interconnected systems.</p>
+          <p class="lead">Cyber ​​Systems Technician specializing in cybersecurity, network security, infrastructure, and security automation. Develops Python-based solutions for automation, environment analysis, and the integration of industrial systems (including PLCs).</p>
         </div>
         <div class="reveal hero-actions" style="transition-delay: 280ms;">
-<a href="#projects" class="btn btn-primary"><span class="sweep"></span><span>VIEW LABS</span></a>
-          <a href="https://github.com/GuilhermeSANT29" target="_blank" rel="noopener" class="btn btn-outline magenta">GITHUB</a>
-          <a href="https://linkedin.com/in/gui-santos05092008" target="_blank" rel="noopener" class="btn btn-outline cyan">LINKEDIN</a>
-          <a href="https://www.credly.com/users/guilhermesant29" target="_blank" rel="noopener" class="btn btn-outline amber">CERTIFICADOS</a>
-<a href="Portifolio.pptx" download class="btn btn-outline orange">PORTFOLIO</a>
-          <a href="CURRICULO-Guilherme-Santos.pdf" download class="btn btn-outline green">CURRICULO ▼</a>
-        </div>
-        <div class="reveal hero-stats" style="transition-delay: 340ms;">
-          <div class="panel stat"><dt>STATUS</dt><dd>OPEN TO WORK</dd></div>
-          <div class="panel stat"><dt>LOCATION</dt><dd>GUARULHOS, SP</dd></div>
+          <div class="hero-action-group professional">
+            <a href="https://linkedin.com/in/gui-santos05092008" target="_blank" rel="noopener" class="btn btn-outline cyan">LINKEDIN</a>
+            <a href="https://github.com/GuilhermeSANT29" target="_blank" rel="noopener" class="btn btn-outline magenta">GITHUB</a>
+          </div>
+          <div class="hero-action-group documents">
+            <a href="Portifolio.pptx" download class="btn btn-outline orange">PORTFOLIO</a>
+            <a href="CURRICULO-Guilherme-Santos.pdf" download class="btn btn-outline ice">CURRICULO ▼</a>
+          </div>
+          <div class="hero-action-group supporting">
+            <a href="https://www.credly.com/users/guilhermesant29" target="_blank" rel="noopener" class="btn btn-outline amber">CERTIFICADOS</a>
+            <a href="#projects" class="btn btn-labs"><span>VIEW LABS</span></a>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ========================================================
-         TICKER (SKILLS MARQUEE)
-         Infinite horizontal strip of key skill keywords.
-         The track is duplicated by JS for a seamless loop.
+         TICKER (SKILLS LOOP)
          ======================================================== -->
     <div class="ticker">
       <div class="ticker-track" id="ticker-track">
-        <span><span class="diamond">◆</span>BACK-END DEV</span>
-        <span><span class="diamond">◆</span>BLUE TEAM</span>
+        <span><span class="diamond">◆</span>BACK-END</span>
         <span><span class="diamond">◆</span>INFRASTRUCTURE</span>
         <span><span class="diamond">◆</span>NETWORK SECURITY</span>
         <span><span class="diamond">◆</span>INDUSTRIAL AUTOMATION</span>
-        <span><span class="diamond">◆</span>PYTHON AUTOMATION</span>
+        <span><span class="diamond">◆</span>BLUE TEAM</span>
         <span><span class="diamond">◆</span>LOG ANALYSIS</span>
         <span><span class="diamond">◆</span>VULNERABILITY MANAGEMENT</span>
       </div>
@@ -1028,15 +1205,17 @@
 
     <!-- ========================================================
          SECTION 2 — PROFILE (id="about")
-         Short intro text + a fake terminal that "types out"
-         a profile summary (handled by JS below).
          ======================================================== -->
     <section id="about">
       <div class="container">
         <div class="reveal">
           <div class="eyebrow">// PROFILE</div>
-          <h2 class="section-title">Security first. <span class="text-neon glow-text">Systems minded.</span></h2>
-          <p>A technical foundation combining cyber-systems, networks, development, databases, automation, and infrastructure. For Cybersecurity, the focus is on understanding how systems and networks work, identifying risks, and applying controls and automation in a practical, objective way.</p>
+          <h2 class="section-title"><span class="text-blue">Security first.</span> <span class="text-green">Systems minded.</span></h2>
+          <div class="profile-copy">
+            <p>A multidisciplinary technical background combining electrical systems, cyber systems, computer networks, back-end software development, databases, automation, and infrastructure.</p>
+            <p>Focused on system protection, integration, and automation, with a practical approach to understanding how technologies, networks, and infrastructures operate, identifying risks, implementing security controls, and developing efficient solutions.</p>
+            <p>In cybersecurity, the focus is on analyzing systems and networks, identifying vulnerabilities and risks, implementing protective measures, and leveraging automation to improve the security, reliability, and efficiency of technological environments.</p>
+          </div>
         </div>
         <div class="reveal terminal panel scanlines" style="transition-delay: 120ms;">
           <div class="terminal-header">
@@ -1053,16 +1232,17 @@
     </section>
 
     <!-- ========================================================
-         SECTION 5 — LABS & PROJECTS (id="projects")
-         2-column grid of practical projects (IoT monitoring,
-         industrial system and future security work).
+         SECTION 3 — LABS & PROJECTS (id="projects")
          ======================================================== -->
     <section id="projects">
       <div class="container">
         <div class="reveal">
-          <div class="eyebrow">// CYBER-SYSTEMS TECHNICIAN</div>
+          <div class="eyebrow">// TECHNICIAN</div>
           <h2 class="section-title">Cyber-Systems <span class="text-neon glow-text">Projects</span></h2>
-          <p>Projects connecting Cybersecurity, software, data, networks, IoT, and automation.</p>
+          <div class="projects-copy">
+            <p>Academic projects integrating electrical systems, PLCs, databases, back-end programming, virtual machines, and operating systems, developed as part of my technical studies in Cyber Systems.</p>
+            <p>Projects focused on systems integration, automation, networking, infrastructure, and cybersecurity, with practical applications connecting hardware and software. Projects and technical documentation are cataloged on GitHub and LinkedIn.</p>
+          </div>
         </div>
         <div class="grid-2">
           <div class="reveal panel corner-brackets card" style="transition-delay: 80ms;">
@@ -1085,48 +1265,76 @@
 
     <!-- ========================================================
          SECTION 4 — CYBER DEFENSE (id="security")
-         Cybersecurity learning roadmap and upcoming project work.
          ======================================================== -->
     <section id="security">
       <div class="container">
         <div class="reveal">
-          <div class="eyebrow">// CYBERSECURITY ANALYST <span class="progress"><span class="pulse"></span>IN PROGRESS</span></div>
-          <h2 class="section-title">Cyber Defense <span class="text-neon glow-text">Skills &amp; Labs</span></h2>
-          <p>Cybersecurity content is currently being developed. Monitoring, data protection, and attack analysis projects will be published here soon.</p>
-        </div>
-        <div class="grid-3">
+          <div class="eyebrow">// Cyber-Defense <span class="progress"><span class="pulse"></span>IN PROGRESS</span></div>
+          <h2 class="section-title"><span class="text-neon glow-text">CyberSecurity</span></h2>
+          <div class="cybersecurity-copy">
+            <p class="security-lead">I am building a practical foundation in <strong>Cybersecurity and Cyber Systems</strong>, connecting network security, system protection, monitoring, infrastructure, and automation through hands-on labs and technical research.</p>
+            <div class="cybersecurity-panels">
+              <article class="panel corner-brackets card security-card">
+                <div class="kicker">DEFENSE STACK // BLUE TEAM</div>
+                <h3>Protect. Detect. Respond.</h3>
+                <p>My defensive track focuses on understanding systems deeply enough to harden them, monitor their signals, and respond to risk with precision.</p>
+                <div class="tags"><span class="tag defense">LOG ANALYSIS</span><span class="tag defense">WIRESHARK</span><span class="tag defense">HARDENING</span><span class="tag defense">ACCESS CONTROL</span><span class="tag defense">MONITORING</span></div>
+              </article>
+              <article class="panel corner-brackets card security-card attack">
+                <div class="kicker">ATTACK SURFACE // ANALYSIS</div>
+                <h3>Understand the threat.</h3>
+                <p>I study how attacks move through networks and applications, then connect each technique to its defensive mechanism and observable indicators.</p>
+                <div class="tags"><span class="tag attack">DDoS / DNS</span><span class="tag attack">BRUTE FORCE</span><span class="tag attack">RECON</span><span class="tag attack">SCANNING</span><span class="tag attack">PHISHING</span><span class="tag attack">WEB VULNERABILITIES</span></div>
+              </article>
+              <article class="panel corner-brackets card security-card red-team">
+                <div class="kicker">RED TEAM // AUTHORIZED TESTING</div>
+                <h3>Hack ethically. Report clearly.</h3>
+                <p>Ethical hacking in controlled environments, with defined scope and authorization, to validate security controls, expose weaknesses, and produce actionable remediation reports.</p>
+                <div class="tags"><span class="tag red-team">PENETRATION TESTING</span><span class="tag red-team">RECONNAISSANCE</span><span class="tag red-team">THREAT MODELING</span><span class="tag red-team">CONTROLLED EXPLOITATION</span><span class="tag red-team">REMEDIATION</span></div>
+              </article>
+              <article class="panel corner-brackets card security-card">
+                <div class="kicker">LAB ENVIRONMENT // TOOLING</div>
+                <h3>Build. Test. Automate.</h3>
+                <p>Linux and Windows environments, virtual machines, databases, back-end development, and automation form the laboratory where these skills become working projects.</p>
+                <div class="tags"><span class="tag">LINUX</span><span class="tag">WINDOWS</span><span class="tag">VIRTUAL MACHINES</span><span class="tag">NETWORKS</span><span class="tag">PYTHON</span><span class="tag">AUTOMATION</span></div>
+              </article>
+              <article class="panel corner-brackets card security-card roadmap">
+                <div class="kicker">ROADMAP // NEXT LEVEL</div>
+                <h3>Grow with intention.</h3>
+                <p>My goal is to pursue higher education while building a portfolio of practical projects, technical documentation, and security research.</p>
+                <div class="tags"><span class="tag school">FIAP</span><span class="tag school">MACKENZIE</span><span class="tag school">PUC</span><span class="tag school">IFSP</span><span class="tag school">RESEARCH</span></div>
+              </article>
+            </div>
+            <p class="security-lead">Monitoring, data protection, attack analysis, and cyber-defense projects are <strong>in development</strong> and will be published here as they progress.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ========================================================
-         SECTION 6 — EXPERIENCE (id="experience")
-         Career timeline. Currently one entry summarizing the
-         ongoing technical development phase.
+         SECTION 5 — EXPERIENCE (id="experience")
          ======================================================== -->
     <section id="experience">
       <div class="container">
         <div class="reveal">
           <div class="eyebrow">// EXPERIENCE</div>
           <h2 class="section-title">Professional <span class="text-neon glow-text">Experiences</span></h2>
-          <p>Relevant work experience and projects.</p>
+          <p>Cybersecurity, industrial automation, networks, and IT/OT integration.</p>
         </div>
         <div class="reveal timeline" style="transition-delay: 120ms;">
           <article>
             <span class="bullet"></span>
-            <div class="meta">CURRENT / CONSORCIO CANTAREIRA</div>
-            <h3>TECHNICAL &amp; Cybersystems for Automation</h3>
-            <div class="role">The company hired me to support my professional development as a Cyber-Systems Technician within the CT (Cybersystems) team.</div>
-            <p>Hands-on work involving networks, systems, programming, automation, data, and security fundamentals.</p>
+            <div class="meta"> 04/2025 - 06/2026 / CONSORCIO CANTAREIRA</div>
+            <h3>Aprendiz em Cybersystems for Automation</h3>
+            <div class="role">The company provided me with the opportunity to develop professionally as a Cyber-Systems Technician, working within the Cyber Systems team.</div>
+            <p>Activities include industrial network connectivity analysis, event log verification, system monitoring, and support for the integration between Operational Technology (OT) infrastructure and IT applications.</p>
           </article>
         </div>
       </div>
     </section>
 
     <!-- ========================================================
-         SECTION 7 — EDUCATION (id="education")
-         Academic background card (SENAI — Cybersystems
-         Technician) plus language proficiency tags.
+         SECTION 6 — EDUCATION (id="education")
          ======================================================== -->
     <section id="education">
       <div class="container">
@@ -1138,27 +1346,51 @@
           <div class="meta">FEB 2025 — DEC 2026</div>
           <h3>Cybersystems Technician</h3>
           <div class="school">SENAI — Guarulhos, Brazil</div>
-          <p>Technical training grounded in cyber-systems, networks, software development, automation, cloud computing, databases, and security fundamentals.</p>
+          <p>Technical training focused on Cyber Systems, Computer Networks, Back-End Development, Industrial Automation, Cloud Computing, Databases, and Cybersecurity fundamentals.</p>
         </div>
+        
         <!-- Languages sub-section: prominent cards with CEFR levels -->
         <div class="reveal languages" style="transition-delay: 160ms;">
           <h3 class="languages-title">// Languages</h3>
           <p class="languages-sub">Summary of language proficiency according to the Common European Framework of Reference for Languages (CEFR).</p>
           <div class="languages-grid">
-            <div class="panel language-card">
-              <span class="lang-name">Portuguese</span>
+            <div class="panel language-card portuguese">
+              <span class="lang-name">Portuguese (Brazil)</span>
               <span class="cefr">C2</span>
               <p class="lang-level">Native / Proficiency</p>
             </div>
-            <div class="panel language-card">
+            <div class="panel language-card english">
               <span class="lang-name">English</span>
               <span class="cefr">B1</span>
               <p class="lang-level">Intermediate</p>
             </div>
-            <div class="panel language-card">
+            <div class="panel language-card spanish">
               <span class="lang-name">Spanish</span>
               <span class="cefr">A2</span>
               <p class="lang-level">Basic</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Languages sub-section: developer languages -->
+        <div class="reveal developer-languages" style="transition-delay: 220ms;">
+          <h3 class="languages-title">// Developer Languages</h3>
+          <p class="languages-sub">Programming and web technologies organized by development area.</p>
+          <div class="developer-grid">
+            <div class="panel corner-brackets developer-card frontend">
+              <div class="developer-area">FRONT-END // WEB INTERFACE</div>
+              <p class="developer-description">Structure, styling, and behavior for responsive web interfaces.</p>
+              <div class="developer-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JAVASCRIPT</span><span class="tag">REACT</span></div>
+            </div>
+            <div class="panel corner-brackets developer-card backend">
+              <div class="developer-area">BACK-END // SYSTEMS</div>
+              <p class="developer-description">Logic, automation, applications, and systems integration.</p>
+              <div class="developer-tags"><span class="tag">PYTHON</span><span class="tag">C++</span><span class="tag">C#</span><span class="tag">API REST</span><span class="tag">MYSQL</span></div>
+            </div>
+            <div class="panel corner-brackets developer-card automation">
+              <div class="developer-area">ELECTRICAL FUNDAMENTALS // PLC</div>
+              <p class="developer-description">Control logic and industrial process automation using programmable logic controllers.</p>
+              <div class="developer-tags"><span class="tag">LADDER</span><span class="tag">PLC</span><span class="tag">INDUSTRIAL AUTOMATION</span></div>
             </div>
           </div>
         </div>
@@ -1166,27 +1398,33 @@
     </section>
 
 <!-- ========================================================
-         SECTION 8 — CONTACT (id="contact")
-         "Open channel" section with email (opens Gmail) and
-         WhatsApp cards. Links are external and open in a new tab.
+         SECTION 7 — CONTACT (id="contact")
          ======================================================== -->
     <section class="contact" id="contact">
       <div class="cyber-grid" style="opacity: 0.4;"></div>
       <div class="orb"></div>
       <div class="container" style="position:relative;z-index:1;">
-        <div class="reveal">
+        <div class="reveal contact-copy">
           <div class="eyebrow">// OPEN CHANNEL</div>
           <h2 class="section-title">Let's <span class="text-neon glow-text">Connect</span></h2>
-          <p>Open to internship opportunities and junior positions in Cybersecurity, SOC, Blue Team, and related areas.</p>
+          <p class="contact-lead">Let's build something secure.</p>
+          <p>Technology is not only about writing code, configuring networks, or deploying systems. It is about understanding a problem, designing the right solution, and making it work reliably in the real world.</p>
+          <p>I work across <strong>Cybersecurity, Back-End Development, Networks, Databases, Automation, IT/OT, and Infrastructure</strong>, connecting different areas of technology to build practical and secure solutions.</p>
+          <p>Whether you need a technical implementation, cybersecurity assessment, automation solution, infrastructure project, or business contract, I am open to discussing the scope and building around your actual needs.</p>
+          <p class="contact-question">Have a project, technical challenge, or business need?</p>
         </div>
         <div class="grid-2">
           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contate.guilherme.santos@gmail.com&su=Oportunidade%20de%20Contato" target="_blank" rel="noopener" class="reveal panel contact-card" style="transition-delay: 70ms;">
             <div class="label">EMAIL</div>
             <div class="value">contate.guilherme.santos@gmail.com</div>
+            <div class="action">For opportunities, projects, and detailed proposals.</div>
+            <span class="arrow">OPEN CHANNEL →</span>
           </a>
           <a href="https://wa.me/5511961778262" target="_blank" rel="noopener" class="reveal panel contact-card" style="transition-delay: 140ms;">
             <div class="label">WHATSAPP</div>
             <div class="value">+55 11 96177-8262</div>
+            <div class="action">For a quick conversation about your idea or technical challenge.</div>
+            <span class="arrow">START CONVERSATION →</span>
           </a>
         </div>
       </div>
@@ -1199,7 +1437,8 @@
        ========================================================== -->
   <footer>
     <div class="container footer-inner">
-      <span class="text-primary">SANT29 // CYBERSECURITY</span>
+      <span class="text-primary">SANT29 // Dev • Hackear • Cyber Systems
+</span>
       <span>© 2026 Guilherme Santos</span>
     </div>
   </footer>
@@ -1278,7 +1517,7 @@
         const lines = [
           { type: "prompt", text: "Mind-Set" },
           { type: "kv", key: "area", val: "Cybersecurity / Cybersystems" },
-          { type: "kv", key: "core", val: "Networking + Systems + Security + Automation" },
+          { type: "kv", key: "core", val: "Networking . Systems . Security . Automation" },
           { type: "kv", key: "education", val: "Junior Cybersecurity Analyst — Cisco" },
           { type: "kv", key: "education", val: "Technician in Cybersystems — SENAI" },
           { type: "OK", text: "OPEN TO OPPORTUNITIES // GUARULHOS, SP — BRAZIL" }
