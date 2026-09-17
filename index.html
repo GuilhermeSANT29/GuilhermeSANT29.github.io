@@ -284,6 +284,7 @@
       height: 1px;
       background: color-mix(in oklab, var(--primary) 70%, transparent);
     }
+    .eyebrow .progress { margin-top: 0; margin-left: 1rem; }
 
     /* Large display heading for each section. */
     .section-title {
@@ -335,6 +336,7 @@
 .btn-outline:hover { transform: translateY(-2px); }
 .btn-outline.cyan:hover { border-color: var(--cyan); color: var(--cyan); }
     .btn-outline.magenta:hover { border-color: var(--magenta); color: var(--magenta); }
+  .btn-outline.amber:hover { border-color: var(--amber); color: var(--amber); }
     .btn-outline.orange:hover { border-color: var(--blood-bright); color: var(--blood-bright); }
     .btn-outline.green:hover { border-color: var(--green); color: var(--green); }
 
@@ -638,7 +640,7 @@
       transition: transform 0.2s;
     }
     .card .link:hover { transform: translateX(4px); }
-    .card .progress {
+    .progress {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -649,7 +651,7 @@
       letter-spacing: 0.14em;
       color: var(--amber);
     }
-    .card .progress .pulse { width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--amber); animation: blink 1.5s infinite; }
+    .progress .pulse { width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--amber); animation: blink 1.5s infinite; }
 
     /* ----------------------------------------------------------
        TERMINAL
@@ -957,9 +959,8 @@
     </div>
     <nav class="mobile-nav" id="mobile-nav">
       <a href="#about">PROFILE</a>
-      <a href="#security">DEFENSE</a>
-      <a href="#technology">TECHNOLOGY</a>
       <a href="#projects">LABS</a>
+      <a href="#security">DEFENSE</a>
       <a href="#experience">EXPERIENCE</a>
       <a href="#education">EDUCATION</a>
       <a href="#contact">CONTACT</a>
@@ -996,8 +997,9 @@
 <a href="#projects" class="btn btn-primary"><span class="sweep"></span><span>VIEW LABS</span></a>
           <a href="https://github.com/GuilhermeSANT29" target="_blank" rel="noopener" class="btn btn-outline magenta">GITHUB</a>
           <a href="https://linkedin.com/in/gui-santos05092008" target="_blank" rel="noopener" class="btn btn-outline cyan">LINKEDIN</a>
-<a href="https://canva.link/potifolioguilhermesantos" target="_blank" rel="noopener" class="btn btn-outline orange">PORTFOLIO</a>
-          <a href="CURRICULO-Guilherme-Santos.pdf" download class="btn btn-outline green">RESUME ▼</a>
+          <a href="https://www.credly.com/users/guilhermesant29" target="_blank" rel="noopener" class="btn btn-outline amber">CERTIFICADOS</a>
+<a href="https://raw.githubusercontent.com/GuilhermeSANT29/GuilhermeSANT29/main/Portif%C3%B3lio%20T%C3%A9cnico%20em%20cibersistemas.pdf" download="Portif%C3%B3lio%20T%C3%A9cnico%20em%20cibersistemas.pdf" class="btn btn-outline orange">PORTFOLIO</a>
+          <a href="CURRICULO-Guilherme-Santos.pdf" download class="btn btn-outline green">CURRICULO ▼</a>
         </div>
         <div class="reveal hero-stats" style="transition-delay: 340ms;">
           <div class="panel stat"><dt>STATUS</dt><dd>OPEN TO WORK</dd></div>
@@ -1051,129 +1053,15 @@
     </section>
 
     <!-- ========================================================
-         SECTION 3 — CYBER DEFENSE (id="security")
-         3-column grid of six defense skill cards: SOC operations,
-         blue team, incident response, network defense, system
-         defense and vulnerability management.
-         ======================================================== -->
-    <section id="security">
-      <div class="container">
-        <div class="reveal">
-          <div class="eyebrow">// CYBER DEFENSE</div>
-          <h2 class="section-title">Cyber Defense <span class="text-neon glow-text">Skills</span></h2>
-          <p>Cyber defense, monitoring, analysis, incident response, and network and system security.</p>
-        </div>
-        <div class="grid-3">
-          <div class="reveal panel corner-brackets card" style="transition-delay: 70ms;">
-            <div class="kicker">01 / SOC Operations</div>
-            <h3>Security Monitoring</h3>
-            <p>Event monitoring, triage, alert analysis, evidence correlation, and initial identification of suspicious behavior.</p>
-            <div class="tags"><span class="tag">SOC</span><span class="tag">Alert Triage</span><span class="tag">Log Analysis</span><span class="tag">Event Monitoring</span></div>
-            <span class="progress"><span class="pulse"></span>IN PROGRESS</span>
-          </div>
-          <div class="reveal panel corner-brackets card" style="transition-delay: 140ms;">
-            <div class="kicker">02 / Blue Team</div>
-            <h3>Threat Detection &amp; Defense</h3>
-            <p>Detection, prevention, investigation, and continuous improvement of an environment's defensive controls.</p>
-            <div class="tags"><span class="tag">Blue Team</span><span class="tag">Threat Detection</span><span class="tag">IOC</span><span class="tag">Security Controls</span></div>
-            <span class="progress"><span class="pulse"></span>IN PROGRESS</span>
-          </div>
-          <div class="reveal panel corner-brackets card" style="transition-delay: 210ms;">
-            <div class="kicker">03 / Incident Response</div>
-            <h3>Incident Response</h3>
-            <p>Incident lifecycle: preparation, identification, containment, eradication, recovery, and documentation.</p>
-            <div class="tags"><span class="tag">IR</span><span class="tag">Triage</span><span class="tag">Containment</span><span class="tag">Documentation</span></div>
-            <span class="progress"><span class="pulse"></span>IN PROGRESS</span>
-          </div>
-          <div class="reveal panel corner-brackets card" style="transition-delay: 280ms;">
-            <div class="kicker">04 / Network Defense</div>
-            <h3>Network Security</h3>
-            <p>Understanding of networks and protocols for traffic analysis, troubleshooting, segmentation, and anomaly detection.</p>
-            <div class="tags"><span class="tag">TCP/IP</span><span class="tag">DNS</span><span class="tag">HTTP/HTTPS</span><span class="tag">Network Analysis</span></div>
-            <span class="progress"><span class="pulse"></span>IN PROGRESS</span>
-          </div>
-          <div class="reveal panel corner-brackets card" style="transition-delay: 350ms;">
-            <div class="kicker">05 / Endpoint &amp; Systems</div>
-            <h3>System Defense</h3>
-            <p>Endpoint and server protection, access control, secure configuration, hardening, and systems administration.</p>
-            <div class="tags"><span class="tag">Linux</span><span class="tag">Windows</span><span class="tag">Hardening</span><span class="tag">Access Control</span></div>
-            <span class="progress"><span class="pulse"></span>IN PROGRESS</span>
-          </div>
-          <div class="reveal panel corner-brackets card" style="transition-delay: 420ms;">
-            <div class="kicker">06 / Vulnerability Mgmt</div>
-            <h3>Security Assessment</h3>
-            <p>Identification and prioritization of vulnerabilities, risk analysis, exposure, and remediation fundamentals.</p>
-            <div class="tags"><span class="tag">Vulnerability Assessment</span><span class="tag">Risk Analysis</span><span class="tag">Remediation</span></div>
-            <span class="progress"><span class="pulse"></span>IN PROGRESS</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================
-         SECTION 4 — TECHNOLOGY (id="technology")
-         3-column grid of technical foundation cards: automation,
-         data, embedded/IoT, cloud fundamentals and workflow.
-         Note: this section uses the blood-red accent variant.
-         ======================================================== -->
-    <section id="technology">
-      <div class="container">
-        <div class="reveal">
-          <div class="eyebrow">// TECHNOLOGY</div>
-          <h2 class="section-title">Technical <span class="text-neon glow-text">Foundation</span></h2>
-          <p>Technical fundamentals for security-focused projects: automation, data, connected systems, and infrastructure.</p>
-        </div>
-        <div class="grid-3">
-          <div class="reveal panel corner-brackets card" style="transition-delay: 70ms;">
-            <div class="kicker">Automation</div>
-            <h3>Python &amp; Scripting</h3>
-            <p>Task automation, API integration, data handling, and building supporting technical tools.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">Scripting</span><span class="tag">Automation</span></div>
-            <span class="progress"><span class="pulse"></span>IN PROGRESS</span>
-          </div>
-          <div class="reveal panel corner-brackets card" style="transition-delay: 140ms;">
-            <div class="kicker">Data</div>
-            <h3>Databases &amp; SQL</h3>
-            <p>Data modeling, querying, and management applied to systems and technical information analysis.</p>
-            <div class="tags"><span class="tag">MySQL</span><span class="tag">SQL</span><span class="tag">Data Modeling</span></div>
-            <span class="progress"><span class="pulse"></span>IN PROGRESS</span>
-          </div>
-          <div class="reveal panel corner-brackets card" style="transition-delay: 210ms;">
-            <div class="kicker">Embedded</div>
-            <h3>IoT &amp; Integrations</h3>
-            <p>Prototypes and connected systems using microcontrollers, sensors, APIs, and data storage.</p>
-            <div class="tags"><span class="tag">ESP8266</span><span class="tag">Arduino</span><span class="tag">IoT</span><span class="tag">REST</span></div>
-            <span class="progress"><span class="pulse"></span>IN PROGRESS</span>
-          </div>
-          <div class="reveal panel corner-brackets card" style="transition-delay: 280ms;">
-            <div class="kicker">Infrastructure</div>
-            <h3>Cloud Fundamentals</h3>
-            <p>Infrastructure, services, computing environments, and cloud fundamentals applied to security.</p>
-            <div class="tags"><span class="tag">Cloud</span><span class="tag">Infrastructure</span><span class="tag">Linux</span><span class="tag">Windows</span></div>
-            <span class="progress"><span class="pulse"></span>IN PROGRESS</span>
-          </div>
-          <div class="reveal panel corner-brackets card" style="transition-delay: 350ms;">
-            <div class="kicker">Tooling</div>
-            <h3>Development Workflow</h3>
-            <p>Version control, documentation, automation, and organization of technical projects.</p>
-            <div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">APIs</span><span class="tag">Documentation</span></div>
-            <span class="progress"><span class="pulse"></span>IN PROGRESS</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================
          SECTION 5 — LABS & PROJECTS (id="projects")
          2-column grid of practical projects (IoT monitoring,
-         industrial system, security/network labs). Two projects
-         are marked "EM PROGRESSO" (in progress).
+         industrial system and future security work).
          ======================================================== -->
     <section id="projects">
       <div class="container">
         <div class="reveal">
-          <div class="eyebrow">// LABS &amp; PROJECTS</div>
-          <h2 class="section-title">Technical <span class="text-neon glow-text">Evidence</span></h2>
+          <div class="eyebrow">// CYBER-SYSTEMS TECHNICIAN</div>
+          <h2 class="section-title">Cyber-Systems <span class="text-neon glow-text">Projects</span></h2>
           <p>Projects connecting Cybersecurity, software, data, networks, IoT, and automation.</p>
         </div>
         <div class="grid-2">
@@ -1191,20 +1079,22 @@
             <div class="tags"><span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">Automation</span><span class="tag">Data Management</span></div>
 <a href="https://github.com/GuilhermeSANT29/DataBase/tree/main/projeto%20do%20falabella" target="_blank" rel="noopener" class="link">VIEW REPOSITORY →</a>
           </div>
-          <div class="reveal panel corner-brackets card" style="transition-delay: 240ms;">
-            <div class="kicker">NEXT SECURITY LAB</div>
-            <h3>Security Monitoring Lab</h3>
-            <p>Lab documenting event monitoring, log analysis, basic investigation, and security indicators in a controlled environment.</p>
-            <div class="tags"><span class="tag">SOC</span><span class="tag">Logs</span><span class="tag">Detection</span><span class="tag">Blue Team</span></div>
-            <span class="progress"><span class="pulse"></span>IN PROGRESS</span>
-          </div>
-          <div class="reveal panel corner-brackets card" style="transition-delay: 320ms;">
-            <div class="kicker">NEXT SECURITY LAB</div>
-            <h3>Network Security Lab</h3>
-            <p>Lab for traffic analysis, protocols, network configuration, and identification of anomalous behavior in an authorized environment.</p>
-            <div class="tags"><span class="tag">TCP/IP</span><span class="tag">DNS</span><span class="tag">Traffic Analysis</span><span class="tag">Network Security</span></div>
-            <span class="progress"><span class="pulse"></span>IN PROGRESS</span>
-          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 4 — CYBER DEFENSE (id="security")
+         Cybersecurity learning roadmap and upcoming project work.
+         ======================================================== -->
+    <section id="security">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">// CYBERSECURITY ANALYST <span class="progress"><span class="pulse"></span>IN PROGRESS</span></div>
+          <h2 class="section-title">Cyber Defense <span class="text-neon glow-text">Skills &amp; Labs</span></h2>
+          <p>Cybersecurity content is currently being developed. Monitoring, data protection, and attack analysis projects will be published here soon.</p>
+        </div>
+        <div class="grid-3">
         </div>
       </div>
     </section>
